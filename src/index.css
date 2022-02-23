@@ -1,0 +1,73 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+    :root{
+        --color-base-background: #6F6F6F;
+        --color-text:#ffffff;
+        --color-text-back:#000000;
+        --color-unoD:#1D1D1D;
+        --user-background:#070707;
+        --color-menu-select:#F5F5F5;
+        --color-bg-select-menu-product:#555555;
+        
+    }
+    .theme-arko{
+        --color-base-background: #FFFFFF;
+        --color-text:#000000;
+        --color-text-back:#ffffff;
+        --color-unoD:#FFFFFF;
+        --user-background:#1D1D1D;
+        --color-menu-select:#1D1D1D;
+        --color-bg-select-menu-product:#999999;
+    }
+}
+
+@font-face {
+    font-family: monserrat;
+    src: url("./assets/fonts/Montserrat_Regular.ttf");
+  }
+@font-face {
+    font-family: monserrat_bold;
+    src: url("./assets/fonts/Montserrat_Bold.otf");
+  }
+@font-face {
+    font-family: monserrat_semibold;
+    src: url("./assets/fonts/Montserrat_SemiBold.otf");
+  }
+@font-face {
+    font-family: monserrat_light;
+    src: url("./assets/fonts/Montserrat_Light.ttf");
+  }
+@font-face {
+    font-family: gotham;
+    src: url("./assets/fonts/Gotham_Bold.otf");
+  }
+@font-face {
+    font-family: gotham_light;
+    src: url("./assets/fonts/Gotham_Light.ttf");
+  }
+
+
+.gotham{
+    font-family:gotham
+}
+.gotham-light{
+    font-family:gotham_light
+}
+.monserrat-light{
+    font-family:monserrat_light
+}
+.monserrat {
+  font-family: monserrat;
+}
+.moserrat-bold{
+    font-family:monserrat_bold
+}
+.moserrat-semibold{
+    font-family:monserrat_semibold
+}
