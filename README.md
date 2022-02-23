@@ -1,5 +1,5 @@
 
-# Vitromex-Arko CMS (Vue+Vuex)
+# Vitromex-Render (Vue+Vuex)
 
 descripcion e instalaciones para correrlo en local y produccion 
 

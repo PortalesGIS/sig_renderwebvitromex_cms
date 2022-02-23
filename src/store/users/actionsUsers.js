@@ -53,8 +53,8 @@ export const getAllUsersApp = async ({commit,getters})=>{
   export const userFilterDates = ({commit,getters},{dateOne="",dateTwo=""})=>{
     const result =  getters.getAllUsersFilter.filter(
       product => {
-        return new Date(dateOne).getTime() <= new Date(product.dateUserCreated).getTime() 
-        && new Date(dateTwo).getTime() >= new Date(product.dateUserCreated).getTime()
+        return new Date(dateOne).getTime() <= new Date(product.createdAt.substring(0,10)).getTime() 
+        && new Date(dateTwo).getTime() >= new Date(product.createdAt.substring(0,10)).getTime()
       }
     )
     commit("setAllUsers",{users:result})

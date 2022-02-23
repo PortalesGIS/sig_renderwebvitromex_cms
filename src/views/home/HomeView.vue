@@ -11,11 +11,11 @@
     <MenuGlobalComponenVue/>
     <div class="w-full h-full">
       
-      <div 
+      <!-- <div 
         v-if="getVieWindow===windows.dashboard"
         class="w-full h-full">
         <DashboradComponentVue/>
-      </div>    
+      </div>     -->
       <div 
         v-if="getVieWindow===windows.users"
         class="w-full h-full">
@@ -26,16 +26,16 @@
         class="w-full fixed h-full">
         <ProductsComponentVue/>
       </div>    
-      <div 
+      <!-- <div 
         v-if="getVieWindow===windows.onboarding"
         class="w-full h-full ">
         <OnboardingComponentVue/>
-      </div>    
-      <div 
+      </div>     -->
+      <!-- <div 
         v-if="getVieWindow===windows.stores"
         class="w-full h-full">
         <StoresComponentVue/>
-      </div>    
+      </div>     -->
       <div 
         v-if="getVieWindow===windows.admins"
         class="w-full h-full">
@@ -49,21 +49,21 @@
 import { mapActions, mapGetters } from 'vuex'
 import MenuGlobalComponenVue from '../../components/menus/MenuGlobalComponen.vue'
 import AdmisComponentVue from '../../components/sections/AdmisComponent.vue'
-import DashboradComponentVue from '../../components/sections/DashboradComponent.vue'
-import OnboardingComponentVue from '../../components/sections/OnboardingComponent.vue'
+// import DashboradComponentVue from '../../components/sections/DashboradComponent.vue'
+// import OnboardingComponentVue from '../../components/sections/OnboardingComponent.vue'
 import ProductsComponentVue from '../../components/sections/ProductsComponent.vue'
-import StoresComponentVue from '../../components/sections/StoresComponent.vue'
+// import StoresComponentVue from '../../components/sections/StoresComponent.vue'
 import UsersComponentVue from '../../components/sections/UsersComponent.vue'
 import {typesViewsMenu} from '../../types/data'
 export default {
   components: {
     MenuGlobalComponenVue,
-    DashboradComponentVue,
+    // DashboradComponentVue,
     UsersComponentVue,
     ProductsComponentVue,
-    StoresComponentVue,
+    // StoresComponentVue,
     AdmisComponentVue,
-    OnboardingComponentVue
+    // OnboardingComponentVue
   },
   data() {
     return {

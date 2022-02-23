@@ -68,11 +68,11 @@
           <div class="col-span-2 flex items-center justify-start">
               <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">Fecha de Registro</p>
               <div class="">
-            <img v-if="stateOfFilters.dateUserCreated" @click="filterAlphabetUsers('dateUserCreated')"
+            <img v-if="stateOfFilters.createdAt" @click="filterAlphabetUsers('createdAt')"
             src="../../assets/dropdown.svg" class="px-2 cursor-pointer" alt="">
             <img 
              v-else
-             @click="filterAlphabetUsers('dateUserCreated')"
+             @click="filterAlphabetUsers('createdAt')"
             src="../../assets/dropdown.svg" class="px-2 cursor-pointer transform rotate-180" alt="">
           </div>
               </div>
@@ -102,7 +102,7 @@
               <p class="text-force-black text-sm font-normal py-2 monserrat">{{user.city}}</p>
           </div>
           <div class="col-span-2">
-              <p class="text-force-black text-sm font-normal py-2 monserrat">{{user.dateUserCreated}}</p>
+              <p class="text-force-black text-sm font-normal py-2 monserrat">{{user.createdAt.substring(0,10)}}</p>
           </div>
       </div>
       </div>

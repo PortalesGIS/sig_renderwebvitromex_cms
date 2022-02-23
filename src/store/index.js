@@ -31,7 +31,7 @@ export default createStore({
   state: {
     pageState:true,
     adminStateLogin:false,
-    activeWindow:1,
+    activeWindow:2,
     dashboard:{
       totalUserRegister:0,
       totalDownloadsApps:0,

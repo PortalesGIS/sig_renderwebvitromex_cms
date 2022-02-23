@@ -18,19 +18,13 @@
                 <img v-else src="../../assets/menu_b.svg" alt="">                
             </div>
       </div>
-      <div class="flex justify-evenly items-center mx-6 mt-10 cursor-pointer"
-            @click="changeVitroArko"
-            >          
+      <div class="flex justify-evenly items-center mx-6 mt-10 cursor-pointer" >          
           <div class="w-full h-20 max-h-32px max-w-170px ">
               <img v-if="getPageState" src="../../assets/Logo.svg" alt="">              
               <img v-else class="-mt-4" src="../../assets/ARKO_LOGO.svg" alt="">              
           </div>
-          <div class="w-4 h-4 ">
-              <img v-if="getPageState" src="../../assets/dropdown.svg" alt="">        
-              <img v-else src="../../assets/dropdown_B.svg" alt="">      
-          </div>
       </div>
-      <div 
+      <!-- <div 
             @click="goTo(typesViews.dashboard )"
             class="flex justify-start items-center px-6 mt-8 py-4 cursor-pointer"
             :class="colorSelected(typesViews.dashboard)"
@@ -51,10 +45,10 @@
               :class="colorText(typesViews.dashboard)"
               class="monserrat ">Dashboard</p>
           </div>
-      </div>
+      </div> -->
       <div 
             @click="goTo(typesViews.users )"
-            class="flex justify-start items-center px-6 py-4 cursor-pointer"
+            class="flex justify-start items-center px-6 mt-8 py-4 cursor-pointer"
              :class="colorSelected(typesViews.users)"
         >
           <div 
@@ -96,7 +90,7 @@
               class="monserrat ">Series y Productos</p>
           </div>
       </div>
-      <div 
+      <!-- <div 
             @click="goTo(typesViews.onboarding )"
             class="flex justify-start items-center px-6  py-4 cursor-pointer"
             :class="colorSelected(typesViews.onboarding)"
@@ -117,8 +111,8 @@
               :class="colorText(typesViews.onboarding)"
               class="monserrat ">Onboarding</p>
           </div>
-      </div>
-      <div 
+      </div> -->
+      <!-- <div 
             @click="goTo(typesViews.stores )"
             class="flex justify-start items-center px-6  py-4 cursor-pointer"
              :class="colorSelected(typesViews.stores)"
@@ -139,7 +133,7 @@
               :class="colorText(typesViews.stores)"
               class="monserrat ">Tiendas</p>
           </div>
-      </div>
+      </div> -->
       <div 
             @click="goTo(typesViews.admins )"
             class="flex justify-start items-center px-6  py-4 cursor-pointer"
