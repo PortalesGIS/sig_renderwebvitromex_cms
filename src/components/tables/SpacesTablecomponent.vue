@@ -127,7 +127,7 @@ export default {
     methods: {
         ...mapActions(["getAllSpacesDB","updateSpaceDB"]),
         async onGetAllSeries(){
-            await this.getAllSpacesDB();
+            // await this.getAllSpacesDB();
         },
         onOpenModalForEditing(space){
           this.$refs.modal.openModalForEditing(space)

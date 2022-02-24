@@ -40,6 +40,18 @@
             src="../../assets/dropdown.svg" class="px-2 cursor-pointer transform rotate-180" alt="">
           </div>
               </div>
+          <div class="col-span-2 flex items-center justify-start">
+              <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">Profesion</p>
+              <div class="">
+            <img  v-if="stateOfFilters.profession"
+             @click="filterAlphabetUsers('profession')"
+            src="../../assets/dropdown.svg" class="px-2 cursor-pointer" alt="">
+            <img 
+             v-else
+             @click="filterAlphabetUsers('profession')"
+            src="../../assets/dropdown.svg" class="px-2 cursor-pointer transform rotate-180" alt="">
+          </div>
+              </div>
           <div class="col-span-1 flex items-center justify-start">
               <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">País</p>
               <div class="">
@@ -52,7 +64,7 @@
             src="../../assets/dropdown.svg" class="px-2 cursor-pointer transform rotate-180" alt="">
           </div>
               </div>
-          <div class="col-span-2 flex items-center justify-start">
+          <div class="col-span-1 flex items-center justify-start">
               <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">Ciudad</p>
               <div class="">
             <img v-if="stateOfFilters.city"
@@ -65,7 +77,7 @@
 
           </div>
               </div>
-          <div class="col-span-2 flex items-center justify-start">
+          <div class="col-span-1 flex items-center justify-start">
               <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">Fecha de Registro</p>
               <div class="">
             <img v-if="stateOfFilters.createdAt" @click="filterAlphabetUsers('createdAt')"
@@ -95,13 +107,16 @@
           <div class="col-span-2">
               <p class="text-force-black text-sm font-normal py-2 monserrat overflow-x-hidden">{{user.email}}</p>
           </div>
+          <div class="col-span-2">
+              <p class="text-force-black text-sm font-normal py-2 monserrat overflow-x-hidden">{{user.profession}}</p>
+          </div>
           <div class="col-span-1">
               <p class="text-force-black text-sm font-normal py-2 monserrat">{{user.country}}</p>
           </div>
-          <div class="col-span-2">
+          <div class="col-span-1">
               <p class="text-force-black text-sm font-normal py-2 monserrat">{{user.city}}</p>
           </div>
-          <div class="col-span-2">
+          <div class="col-span-1">
               <p class="text-force-black text-sm font-normal py-2 monserrat">{{user.createdAt.substring(0,10)}}</p>
           </div>
       </div>
@@ -159,6 +174,7 @@ export default {
               email:true,
               country:true,
               city:true,
+              profession:true,
               date:true,
             }
         }

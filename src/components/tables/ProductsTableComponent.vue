@@ -20,27 +20,28 @@
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">No.</p>
                 </div>
               </th>
-              <th class="sticky top-0 bg-1f z-40 ">
-                <div class=" flex items-center justify-center">
-                  <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">
-                    Imagen <br> Miniatura
-                  </p>
-                </div>
-              </th>
+              
               <th class="sticky top-0 bg-1f z-40">
                 <div class="col-span-2 flex items-center justify-center ">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">
-                    Imagen <br> del producto
+                   Img. en alta de <br> variaciones
                   </p>
                 </div>
               </th>
-              <th class="sticky top-0 bg-1f z-40">
+              <th class="sticky top-0 bg-1f z-40 ">
+                <div class=" flex items-center justify-center">
+                  <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">
+                    Thumbnails de <br> variaciones
+                  </p>
+                </div>
+              </th>
+              <!-- <th class="sticky top-0 bg-1f z-40">
                 <div class="col-span-2 flex items-center justify-center ">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">
                     Textura <br> AR/3D
                   </p>
                 </div>
-              </th>
+              </th> -->
               <th class="sticky  top-0 bg-1f z-40">
                 <div
                   @click="onFilterArrow('name')"
@@ -196,7 +197,7 @@
                   </div>
                 </div>
               </th>
-              <th class="sticky top-0 bg-1f z-40">
+              <!-- <th class="sticky top-0 bg-1f z-40">
                 <div class="col-span-2 flex items-center justify-center ">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">Nuevo</p>
                   <div class="">
@@ -205,7 +206,7 @@
                     src="../../assets/dropdown.svg" class="px-2 cursor-pointer" alt="" />
                   </div>
                 </div>
-              </th>
+              </th> -->
               <th class="sticky top-0 bg-1f z-40">
                 <div class="col-span-2 flex items-center justify-center ">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">Activar</p>
@@ -231,25 +232,25 @@
               </td>
               <td v-if="index >= startData && index <= endData">
                 <div class="flex justify-center">
-                  <p class="text-force-black text-sm py-2 monserrat">
-                    {{ product.smallPicture != "" ? "1/1" : "0/1" }}
+                  <p class="text-force-black text-sm py-2 monserrat truncate">
+                    {{ `${countRendersProduct(product)}/20` }}
                   </p>
                 </div>
               </td>
               <td v-if="index >= startData && index <= endData">
                 <div class="flex justify-center">
-                  <p class="text-force-black text-sm py-2 monserrat truncate">
-                    {{ `${countRendersProduct(product)}/3` }}
+                  <p class="text-force-black text-sm py-2 monserrat">
+                    {{ `${product.thumbnail.length}/${ product.renders.length}` }}
                   </p>
                 </div>
               </td>
-              <td v-if="index >= startData && index <= endData">
+              <!-- <td v-if="index >= startData && index <= endData">
                 <div class="flex justify-center">
                   <p class="text-force-black text-sm py-2 monserrat">
                     {{ `${countImgsProduct(product)}/2` }}
                   </p>
                 </div>
-              </td>
+              </td> -->
               <td v-if="index >= startData && index <= endData">
                 <div class="flex justify-center max-w-full truncate ">
                   <p class="text-force-black text-sm py-2 monserrat capitalize">{{ product.name.toLowerCase() }}</p>
@@ -315,7 +316,7 @@
                   </button>
                 </div>
               </td>
-              <td v-if="index >= startData && index <= endData">
+              <!-- <td v-if="index >= startData && index <= endData">
                 <div
                   class="
                     relative
@@ -388,7 +389,7 @@
                     <img src="../../assets/switch_off.svg" alt="" />
                   </div>
                 </div>
-              </td>
+              </td> -->
               <!-- este filtro sirve para que la tabla no renderize mas de los que deberia optimizar? -->
               <td v-if="index >= startData && index <= endData">
                 <div
@@ -595,18 +596,15 @@ export default {
     onFilterArrowfilterisNewProduct() {
       this.filterisNewProduct()
     },
-    countImgsProduct(product) {
-      let counter = 0;
-      if (product.albedo != "") counter++;
-      if (product.normal != "") counter++;
-      // if (product.roughness != "") counter++;
-      return counter;
-    },
+    // countImgsProduct() {
+    //   let counter = 0;
+    //   return counter;
+    // },
     countRendersProduct(product) {
-      let counter = 0;
-      if (product.renders[0] != "") counter++;
-      if (product.renders[1] != "") counter++;
-      if (product.renders[2] != "") counter++;
+      let counter = product.renders.length;
+      // if (product.renders[0] != "") counter++;
+      // if (product.renders[1] != "") counter++;
+      // if (product.renders[2] != "") counter++;
       return counter;
     },
     serchAplication(product, aplication) {

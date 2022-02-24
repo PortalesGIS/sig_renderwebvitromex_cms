@@ -344,7 +344,6 @@ export default {
             // this.getAllAdminsDB();
             this.getAllproductsdb();
             this.getAllSeriesDB();
-            this.getAllSpacesDB();
             // this.getAllStoreDB();
             // this.getAllTypologiesDB();
             this.getAllUsersApp();

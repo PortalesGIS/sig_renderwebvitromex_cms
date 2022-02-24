@@ -564,7 +564,7 @@ export default {
             this.modalCancel =false;
         },
         async getAllSpacescreated(){
-            await this.getAllSpacesDB()
+            // await this.getAllSpacesDB()
         },
         cancelEditing(){
               this.modalCancel=false;

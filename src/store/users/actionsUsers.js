@@ -32,6 +32,7 @@ export const getAllUsersApp = async ({commit,getters})=>{
       normalizeText(name.city).includes(word) ||
       normalizeText(name.name).includes(word) ||
       normalizeText(name.country).includes(word) ||
+      normalizeText(name.profession).includes(word) ||
       normalizeText(name.email).includes(word) ||
       normalizeText(name.lastName).includes(word)
       )
@@ -84,6 +85,5 @@ export const getAllUsersApp = async ({commit,getters})=>{
         return 0;
       })
     }
-
     commit("setAllUsers",{users:arrayd})
   }

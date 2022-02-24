@@ -31,7 +31,7 @@ export const UpdateFormats = (commit,formatsToUpdate) =>{
           redirect: 'follow'
         };
         fetch(`${baseUrl}/api/formats/update`, requestOptions)
-          .then(response => response.json())
+          .then(response => console.log(response.json()))
           .then((result) =>{
             if(result.error){
                 alert("NO Actualizado")   

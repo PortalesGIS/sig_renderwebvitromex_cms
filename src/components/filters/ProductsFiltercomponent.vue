@@ -19,7 +19,7 @@ class="z-50 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-20">
                 <p class="text-sm text-force-black w-8">{{format.format}}</p>
                 <input 
                 @change="addFormatToUpdate(format)"
-                type="text" :id="format._id" :placeholder="format.rounded" class="text-sm pl-2 w-44 h-8 border border-black lowercase">
+                type="text" :id="format.id" :placeholder="format.format" class="text-sm pl-2 w-44 h-8 border border-black lowercase">
             </div>
             </div>
             <div class="w-full h-7 bg-1f">
@@ -122,10 +122,10 @@ export default {
             this.isOpenModalFormat = isOpend
         },
         addFormatToUpdate(format){
-           let roundedChanged = document.getElementById(format._id).value.toLowerCase() 
+           let roundedChanged = document.getElementById(format.id).value.toLowerCase() 
            if(this.idCorrectFormat(roundedChanged)){
             roundedChanged = roundedChanged.replace(/ /g,"")
-            this.formatsToupdate.push({id:format._id,rounded:roundedChanged})
+            this.formatsToupdate.push({id:format.id,rounded:roundedChanged})
            }
            else{
                alert(`el formato ingresado "${roundedChanged}" no es aceptado por favor asegurate de que sigue el patron 00x00`)
@@ -140,7 +140,7 @@ export default {
        async onUpdateFormatsToDB(){
            this.clickNewFormat(false)
             await this.UpdateFormats(this.formatsToupdate)
-            this.onChangeViewWindow(1)
+            this.onChangeViewWindow(2)
 
         },
         /////////////////////// controlador de paginas Formatos
