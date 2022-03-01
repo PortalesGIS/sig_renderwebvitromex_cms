@@ -164,7 +164,7 @@
                   </div>
                 </div>
               </th>
-              <th v-for="(aplication,index) in getAllSpaces" :key="aplication" class="sticky top-0 bg-1f z-40">
+              <!-- <th v-for="(aplication,index) in getAllSpaces" :key="aplication" class="sticky top-0 bg-1f z-40">
                 <div class="col-span-2 flex items-center justify-center ">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">{{aplication.name}}</p>
                   <div class="">
@@ -173,7 +173,7 @@
                     src="../../assets/dropdown.svg" class="px-2 cursor-pointer" alt="" />
                   </div>
                 </div>
-              </th>
+              </th> -->
               <th class="sticky top-0 bg-1f z-40">
                 <div class="col-span-2 flex items-center justify-center ">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">
@@ -285,7 +285,7 @@
                   <p class="text-force-black text-sm py-2 monserrat capitalize">{{ product.color.toLowerCase() }}</p>
                 </div>
               </td> 
-                <template v-if="index >= startData && index <= endData">   
+                <!-- <template v-if="index >= startData && index <= endData">   
               <td  v-for="aplication in getAllSpaces" :key="aplication" >
                 <div  class="flex justify-center">
                   <div
@@ -297,7 +297,7 @@
                   <div v-else>-</div>
                 </div>
               </td>
-                  </template>  
+                  </template>   -->
               <td v-if="index >= startData && index <= endData">
                 <div class="flex justify-center">
                   <p class="text-force-black text-sm py-2 monserrat">

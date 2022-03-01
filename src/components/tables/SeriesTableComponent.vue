@@ -76,7 +76,7 @@
               </p>
             </div>
             <div class="col-span-2 flex justify-center">
-              <p class="text-force-black text-sm py-2 monserrat">{{ serie.dateCreated }}</p>
+              <p class="text-force-black text-sm py-2 monserrat">{{ serie.createdAt.substring(0,10) }}</p>
             </div>
           </div>
           <div class="mr-10 flex items-center">

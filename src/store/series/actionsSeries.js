@@ -2,15 +2,9 @@ import { normalizeText } from "../helpers";
 import {baseUrl} from "../../types/data"
 
 
-export const getAllSeriesDB = async ({commit,getters})=>{
-  let platform="";
-  if(getters.getPageState){
-     platform =""
-  }  
-  else{
-     platform = "arko"
-  }
-    await fetch(`${baseUrl}/api/series/cms/${platform}`,{
+export const getAllSeriesDB = async ({commit})=>{
+  
+    await fetch(`${baseUrl}/api/series/`,{
       method: "GET",
       headers:{
         'Content-Type': 'application/json'
@@ -30,18 +24,18 @@ export const getAllSeriesDB = async ({commit,getters})=>{
     const result = getters.getAllSeriesFilter.filter(serie =>
       normalizeText(serie.name).includes(word) 
       )
-    commit("setAllSeries",{serie:result})
+    commit("setAllSeries",{series:result})
   }
 
   
   export const seriesFilterDates = ({commit,getters},{dateOne="",dateTwo=""})=>{
     const result =  getters.getAllSeriesFilter.filter(
       product => {
-        return new Date(dateOne).getTime() <= new Date(product.dateCreated).getTime() 
-        && new Date(dateTwo).getTime() >= new Date(product.dateCreated).getTime()
+        return new Date(dateOne).getTime() <= new Date(product.createdAt).getTime() 
+        && new Date(dateTwo).getTime() >= new Date(product.createdAt).getTime()
       }
     )
-    commit("setAllSeries",{serie:result})
+    commit("setAllSeries",{series:result})
   }
 
   export const UpdateSerieImgDB = async ({commit,getters},payload) =>{
