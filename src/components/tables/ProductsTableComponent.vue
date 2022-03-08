@@ -9,13 +9,14 @@
         justify-between
         overflow-x-hidden
         min-w-1500px
+        z-10
       "
     >
       <div class=" w-full overflow-x-auto h-full">
         <table class="w-full  min-w-2100px">
           <thead>
             <tr>
-              <th  class="pl-6 sticky top-0 bg-1f z-40">
+              <th  class="pl-6 sticky top-0 bg-1f ">
                 <div class=" flex items-center justify-center">
                   <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold">No.</p>
                 </div>

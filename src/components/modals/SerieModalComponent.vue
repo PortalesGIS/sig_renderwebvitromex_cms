@@ -4,7 +4,7 @@
         class="z-50 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-20">
         <div class="w-full h-full flex items-center justify-center">
             <div class="w-80  bg-white">
-                <div class="flex justify-end">
+                <div class=" flex justify-end">
                     <img 
                     @click="closeModal"
                     class=" mr-3 mt-3 cursor-pointer w-3 h-3" src="../../assets/cerrar.svg" alt="">
@@ -13,9 +13,9 @@
                     <p class="uppercase text-xl font-bold ">
                            Editar serie
                     </p>
-                </div>
+                </div>                
                 <div  class="flex justify-center pt-5 pb-3">
-                    <p class="text-sm font-bold">
+                    <p class="text-xl font-bold">
                         {{(name)?name:"Not Found"}}
                         </p>
                 </div>
@@ -34,7 +34,7 @@
                         >                        
                         </div>
                         <div class="border mt-2 border-black ">
-                        <p class="px-2 cursor-pointer" style="color:#6e6e6e">Cambiar imagen</p>
+                        <p class="px-2 cursor-pointer" style="color:#1f1f1f">Cambiar imagen</p>
                             </div>                        
                     </div>
                     <div v-else>
@@ -44,7 +44,7 @@
                         style="width:120px;height:120px" alt="">                        
                         </div>                        
                         <div class="border mt-2 border-black ">
-                        <p class="px-2 cursor-pointer" style="color:#6e6e6e">Cambiar imagen</p>
+                        <p class="px-2 cursor-pointer" style="color:#1f1f1f">Cambiar imagen</p>
                             </div>                        
                     </div>
                     <input 

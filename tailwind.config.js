@@ -2,7 +2,11 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '341': '341px',
+      }
+    },
     maxHeight:{
       "120":"36rem",
       "32px":"32px",
@@ -118,6 +122,21 @@ module.exports = {
      '90': '.9',
      '99': '.99',
      '100': '1',
+    },
+    fontSize: {
+      xxs:'10px'
+    },
+    zIndex: {
+      '100': '100',
+      '50': '50',
+      '40': '40',
+      '30': '30',
+      '20': '20',
+    },
+    minHeight: {
+      '470': '470px',
+      '430': '430px',
+      '341': '341px',
     }
   },
   variants: {

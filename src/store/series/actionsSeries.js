@@ -51,14 +51,13 @@ export const getAllSeriesDB = async ({commit})=>{
           seriesUpdates.push(ser)
         }
       })
-      commit('setAllSeries',{serie:seriesUpdates})
-      commit('setAllSeriesFilter',{serie:seriesUpdates})
+      commit('setAllSeries',{series:seriesUpdates})
+      commit('setAllSeriesFilter',{series:seriesUpdates})
       
     // 
     let myHeaders = new Headers();
-    myHeaders.append("key",`${localStorage.getItem("token")}`);
+    myHeaders.append("Access-Control-Allow-Origin",`*`);
     let formdata = new FormData();
-    formdata.append("id", payload.id);
     formdata.append("file", payload.file);
     let requestOptions = {
       method: 'POST',
@@ -66,7 +65,7 @@ export const getAllSeriesDB = async ({commit})=>{
       body: formdata,
       redirect: 'follow'
     };
-    fetch(`${baseUrl}/api/series/upload-img`, requestOptions)
+    fetch(`${baseUrl}/api/files/uploadfile`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

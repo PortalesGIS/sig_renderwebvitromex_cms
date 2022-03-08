@@ -15,13 +15,40 @@
                         <br>
                         <br> Los cambios realizados no se guardarán.</p>
                     </div>
-                    <div class="flex justify-evenly mt-7 ">
+                    <div class="flex justify-evenly mt-5 ">
                         <button 
                         @click="cancelEditing"
                         class="bg-1f text-force-white moserrat-semibold w-44 h-8 ">Eliminar cambios</button>
                         <button 
                         @click="onReturn"
                         class="bg-white w-44 text-force-black moserrat-semibold  h-8 border border-black ">Seguir editando</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div 
+        v-if="modalDeleteImg"
+        class="z-100 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-20">
+        <div class="w-full h-full flex items-center justify-center">
+            <div class="bg-white" style="width:434px; height:200px">               
+                <div class="px-4">
+                    <div class="mt-3">
+                        <p class="text-force-black moserrat-bold text-xl font-bold uppercase">Eliminar imagen de LA VARIACIÓN</p>
+                    </div>
+                    <div class="mt-3">
+                        <p
+                        class="text-force-black monserrat text-sm font-normal"
+                        >¿Estás seguro que deseas eliminar esta imagen? </p>
+                        <br>
+                    </div>
+                    <div class="flex justify-evenly mt-7 ">
+                        <button 
+                        @click="onModalDeleteImg(false)"
+                        class="bg-1f text-force-white moserrat-semibold w-44 h-8 ">Cancelar</button>
+                        <button 
+                        @click="deleteImg"
+                        class="bg-white w-44 text-force-black moserrat-semibold  h-8 border border-black ">Eliminar imagen</button>
                     </div>
                 </div>  
             </div>
@@ -69,113 +96,88 @@
                 <HeaderModalProductsVue :page="page"/>
                 <!-- Page 1 -->
                 <div v-if="page===0"> 
-                <div class="mt-4 w-full h-36 bg-1f">
-                    <div class="pl-16 pt-5">
-                        <p class="uppercase text-xl text-force-white moserrat-bold font-bold">Nombre del producto</p>
-                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Indica el nombre que se visualizará en la App y Web 3D.</p>
-                        <input 
-                        placeholder="value"
-                        v-model="name"
-                        class="bg-white px-3 mt-2 w-96 h-8 uppercase"
-                        type="text">
+                <div class="mt-4 w-full h-20 bg-1f">
+                    <div class="pl-16 pt-3">
+                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Serie</p>
+                        <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
                     </div>                    
                 </div>
                 <div class="mt-8 px-16">
-                    <p class="uppercase text-xl text-force-black moserrat-bold ">Carga de imágenes</p>
-                    <p class="mt-3 text-xs text-force-black monserrat">Carga los tipos de imágenes que se mostrarán dentro del catálogo de la App y Web 3D.</p>
+                    <p class="uppercase text-xl text-force-black moserrat-bold ">imágenes EN ALTA DE VARIACIONES</p>
+                    <p class="mt-3 text-xs text-force-black monserrat">Carga las imágenes que visualizarán los usuarios dentro del detalle de los productos en el Renderizador. Puedes cargar hasta 20 imágenes.</p>
                 </div>  
-                <div class="mt-5 px-16">
+                <!-- <div class="mt-5 px-16">
                     <p class="text-force-black font-semibold text-sm">Imagen del Producto</p>
                     <p class="mt-3 text-xs text-force-black monserrat">Carga las imágenes que visualizarán los usuarios dentro del detalle de los productos en la App. Puedes cargar hasta 3 imágenes.</p>
-                </div> 
-                <div class="px-16 mt-5">
+                </div>  -->
+                <div class='pl-16 flex w-full flex-wrap min-h-470 '>
+                    <div class=" " v-for="item in files" :key="item.name">
+                    <div class="mt-2 ">
                     <div class="flex items-center">
-                        <div class="mx-1 cursor-pointer" style="width:174px; height:112px;">
-                           <label for="inp">
-                               <div v-if="img1===''" class="flex justify-center cursor-pointer">
+                        <div class="relative mx-1 cursor-pointer" style="width:174px; height:112px;">
+                           <label :for="'inp'+item.id">
+                               <div v-if="item.url===''" class="contents cursor-pointer">
                                     <img src="../../assets/agregar_imagen.svg"  alt=""> 
                                </div>
-                               <div v-else class="flex justify-center cursor-pointer border ">
-                                    <img :src="img1"  alt="" style="width:174px; height:112px;"> 
+                               <div v-else class="relative  cursor-pointer border ">
+                                    <img :src="item.url"  alt="" style="width:174px; height:112px;"> 
                                </div>
                            </label>
+                           <div v-if="item.url" class="absolute  top-0 right-0  cursor-pointer ">
+                                    <div @click="onModalDeleteImg(true,item.id)" class="top-0 right-0">
+                                        <img class="w-8" src="../../assets/icons/trash.svg" alt="">
+                                    </div>                
+                               </div>
                         </div>
-                        <!-- imagenes que se pueden eliminar -->
-                        <div class="mx-1" style="width:174px; height:112px;">
-                           <!-- <label for="inp2"> -->
-                               <div v-if="img2===''" class="flex justify-center">
-                                    <img src="../../assets/agregar_imagen.svg"  alt=""> 
-                               </div>
-                               <div v-else class="flex relative justify-center  ">
-                                   <div class="w-40 absolute flex justify-end">
-                                       <img
-                                       @click="onDeleteImgRender(1)"
-                                        class="mt-1 cursor-pointer" src="../../assets/deleteImg.png" style="width:25px; height:25px;" alt="">
-                                   </div>
-                                    <img :src="img2"   alt="" style="width:174px; height:112px;"> 
-                               </div>
-                           <!-- </label> -->
-                        </div>
-                        <div class="mx-1" style="width:174px; height:112px;">
-                           <!-- <label for="inp3"> -->
-                               <div v-if="img3===''" class="flex justify-center ">
-                                    <img src="../../assets/agregar_imagen.svg"  alt=""> 
-                               </div>
-                               <div v-else class="flex relative justify-center">
-                                   <div class="w-40 absolute flex justify-end">
-                                       <img
-                                       @click="onDeleteImgRender(2)"
-                                        class="mt-1 cursor-pointer" src="../../assets/deleteImg.png" style="width:25px; height:25px;" alt="">
-                                   </div>
-                                    <img :src="img3"  alt="" style="width:174px; height:112px;"> 
-                               </div>
-                           <!-- </label> -->
-                        </div>
-                        <!-- end-imagenes que se pueden eliminar  -->
                     </div>
                     <div class="flex justify-between items-center mt-1">
                         <div class="w-44 flex justify-center items-center cursor-pointer" >
-                               <label for="inp">
+                               <label :for="'inp'+item.id">
                                 <div class="border border-black py-1 px-2 cursor-pointer">
                                 <p class="text-xs moserrat-semibold text-force-black ">Cambiar imagen</p>
                                 <input 
-                                @change="addFileimg1"   
+                                @change="onReplaceFile($event,item.id)"   
                                 accept="image/png, image/jpeg"                             
                                 type="file" 
                                 class="hidden" 
-                                id="inp">
+                               :id="'inp'+item.id">
                                 </div>
                                </label>
-                        </div>
-                        <div class="w-44 flex justify-center items-center " >
-                            <label for="inp2">
-                                <div class="border border-black py-1 px-2 cursor-pointer">
-                                <p class="text-xs moserrat-semibold text-force-black ">Cambiar imagen</p>
-                                <input 
-                                @change="addFileimg2"   
-                                accept="image/png, image/jpeg"                             
-                                type="file" 
-                                class="hidden" 
-                                id="inp2">
-                                </div>
-                               </label>
-                        </div>
-                        <div class="w-44 flex justify-center items-center " >
-                            <label for="inp3">
-                                <div class="border border-black py-1 px-2 cursor-pointer">
-                                <p class="text-xs moserrat-semibold text-force-black ">Cambiar imagen</p>
-                                <input 
-                                @change="addFileimg3"   
-                                accept="image/png, image/jpeg"                             
-                                type="file" 
-                                class="hidden" 
-                                id="inp3">
-                                </div>
-                               </label>
-                        </div>                        
+                        </div>                      
                     </div>
-                </div>  
-                <div class="px-16 mt-6">
+                </div> 
+                </div>
+                    <div v-if="files.length<20" >
+                           <div class="mt-2 bg-gray-200">
+                            <div class="flex items-center ">
+                                <div class="mx-1 cursor-pointer" style="width:174px; height:112px;">
+                                <label for="inpAll">
+                                    <div class="flex pt-2 justify-center cursor-pointer">
+                                        <img src="../../assets/agregar_imagen.svg"  alt=""> 
+                                    </div>
+                                    <div class=" pt-2 flex justify-center cursor-pointer">
+                                     <p class="text-xxs moserrat-semibold text-force-black ">Agrega una o más imágenes</p>
+                                    </div>
+                                </label>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-1 ">
+                                <div class="w-44 flex justify-center cursor-pointer" >
+                                    <label  for="inpAll">
+                                        <input 
+                                        multiple 
+                                        @change="onAddFiles"   
+                                        accept="image/png, image/jpeg"                             
+                                        type="file" 
+                                        class="hidden" 
+                                        id="inpAll">
+                                    </label>
+                                </div>                      
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <!-- <div class="px-16 mt-6">
                         <p class="text-force-black moserrat-semibold text-sm">Imagen Miniatura</p>
                         <p class="mt-3 text-xs text-force-black monserrat">Carga la imagen que se mostrará como vista previa 
                             o miniatura del producto en la App y Web 3D.</p>
@@ -205,7 +207,7 @@
                           
                             </label>
                         </div> 
-                </div>  
+                </div>   -->
                 <div class="px-3 mt-5">
                     <div class="h-px bg-d5"></div>
                 </div>                         
@@ -218,111 +220,97 @@
                 </div>
                 <!-- page 2 -->
                 <div v-if="page===1">
-                    <div class="mt-4 w-full h-16 bg-1f">
-                        <div class="pl-16 ">
-                            <p class="text-white text-sm monserrat pt-3">Producto</p>
-                            <p class="uppercase text-xl text-force-white moserrat-bold">{{name}}</p>
-                        </div>                    
+                <div class="mt-4 w-full h-20 bg-1f">
+                    <div class="pl-16 pt-3">
+                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Serie</p>
+                        <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
+                    </div>                    
+                </div>
+                <div class="mt-8 px-16">
+                    <p class="uppercase text-xl text-force-black moserrat-bold ">imágenes EN ALTA DE VARIACIONES</p>
+                    <p class="mt-3 text-xs text-force-black monserrat">Carga las imágenes que visualizarán los usuarios dentro del detalle de los productos en el Renderizador. Puedes cargar hasta 20 imágenes.</p>
+                </div>  
+                <!-- <div class="mt-5 px-16">
+                    <p class="text-force-black font-semibold text-sm">Imagen del Producto</p>
+                    <p class="mt-3 text-xs text-force-black monserrat">Carga las imágenes que visualizarán los usuarios dentro del detalle de los productos en la App. Puedes cargar hasta 3 imágenes.</p>
+                </div>  -->
+                <div class='pl-16 flex w-full flex-wrap min-h-470 '>
+                    <div class=" " v-for="item in thumbnails" :key="item.name">
+                    <div class="mt-2 ">
+                    <div class="flex items-center">
+                        <div class="relative mx-1 cursor-pointer" style="width:174px; height:112px;">
+                           <label :for="'inpth'+item.id">
+                               <div v-if="item.url===''" class="contents cursor-pointer">
+                                    <img src="../../assets/agregar_imagen.svg"  alt=""> 
+                               </div>
+                               <div v-else class="relative  cursor-pointer border ">
+                                    <img :src="item.url"  alt="" style="width:174px; height:112px;"> 
+                               </div>
+                           </label>
+                           <div v-if="item.url" class="absolute  top-0 right-0  cursor-pointer ">
+                                    <div @click="onModalDeleteImg(true,item.id)" class="top-0 right-0">
+                                        <img class="w-8" src="../../assets/icons/trash.svg" alt="">
+                                    </div>                
+                               </div>
+                        </div>
                     </div>
-                    <div class="mt-4 px-16">
-                        <p class="uppercase text-xl text-force-black font-bold ">Carga de imágenes</p>
-                        <p class="mt-2 text-xs text-force-black font-normal monserrat">Carga las texturas que serán montadas dentro de la App y Web 3D.</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="w-44 flex justify-center items-center cursor-pointer" >
+                               <label :for="'inpth'+item.id">
+                                <div class="border border-black py-1 px-2 cursor-pointer">
+                                <p class="text-xs moserrat-semibold text-force-black ">Cambiar imagen</p>
+                                <input 
+                                @change="onReplaceFile($event,item.id)"   
+                                accept="image/png, image/jpeg"                             
+                                type="file" 
+                                class="hidden" 
+                               :id="'inpth'+item.id">
+                                </div>
+                               </label>
+                        </div>                      
                     </div>
-                    <div class="mt-4 px-16">
-                        <p class="text-force-black text-sm moserrat-semibold ">Albedo</p>
-                        <p class="mt-2 text-xs text-force-black monserrat">Agrega las texturas que darán color a los modelos aplicados en la experiencia de Realidad Aumentada en la App y Web 3D.</p>
-                    </div>            
-                    <div class="mt-5 px-16">
-                        <div class="w-44 h-28 bg-f5 flex justify-center items-center">
-                            <label for="inpalbedo">
-                                <div class="">
-                               <div v-if="albedo===''" class="flex justify-center">
-                                    <img src="../../assets/agregar_imagen.svg" style="width:51px; height:51px" alt=""> 
-                               </div>
-                               <div v-else class="flex justify-center pt-5">
-                                    <img :src="albedo" class="object-cover" style="width:174px; height:112px" alt=""> 
-                               </div>
-                               <div v-if="albedo===''" class="flex w-full justify-center">
-                                    <p  class="text-xs mt-2 monserrat">Agregar imagen</p>
-                               </div>
-                               <div v-else class="py-2">
-                                  <div class="border border-black py-1 px-2 flex w-full justify-center">
-                                        <p class="text-xs moserrat-semibold text-force-black">Cambiar imagen</p>
+                </div> 
+                </div>
+                    <div v-if="thumbnails.length<20" >
+                           <div class="mt-2 bg-gray-200">
+                            <div class="flex items-center ">
+                                <div class="mx-1 cursor-pointer" style="width:174px; height:112px;">
+                                <label for="inpAll">
+                                    <div class="flex pt-2 justify-center cursor-pointer">
+                                        <img src="../../assets/agregar_imagen.svg"  alt=""> 
                                     </div>
+                                    <div class=" pt-2 flex justify-center cursor-pointer">
+                                     <p class="text-xxs moserrat-semibold text-force-black ">Agrega una o más imágenes</p>
+                                    </div>
+                                </label>
                                 </div>
                             </div>
-                             <input 
-                                @change="addFilefilealbedo"   
-                                accept="image/png, image/jpeg"                             
-                                type="file" 
-                                class="hidden" 
-                                id="inpalbedo">
-                            </label>
-                        </div>
-                    </div>        
-                    <div class="mt-6 px-16">
-                        <p class="text-force-black text-sm moserrat-semibold pt-1">Normal</p>
-                        <p class="mt-2 text-xs text-force-black monserrat">Agrega las texturas que darán relieve a los modelos aplicados en la experiencia de Realidad Aumentada en  la App y Web 3D.</p>
-                    </div>            
-                    <div class="mt-5 px-16">
-                        <div class="w-44 h-28 bg-f5 flex justify-center items-center">
-                            <label for="inpnormal">
-                                <div class="">
-                               <div v-if="normal===''" class="flex justify-center">
-                                    <img src="../../assets/agregar_imagen.svg" style="width:51px; height:51px" alt=""> 
-                               </div>
-                               <div v-else class="flex justify-center pt-5">
-                                    <img :src="normal" class="object-cover" style="width:174px; height:112px" alt=""> 
-                               </div>
-                                <div v-if="normal===''" class="flex w-full justify-center">
-                                    <p  class="text-xs monserrat mt-2">Agregar imagen</p>
-                               </div>
-                               <div v-else class="py-2">
-                                  <div class="border border-black py-1 px-2 flex w-full justify-center">
-                                        <p class="text-xs moserrat-semibold font-medium text-force-black">Cambiar imagen</p>
-                                    </div>
-                                </div>                               
+                            <div class="flex justify-between items-center mt-1 ">
+                                <div class="w-44 flex justify-center cursor-pointer" >
+                                    <label  for="inpAll">
+                                        <input 
+                                        multiple 
+                                        @change="onAddFiles"   
+                                        accept="image/png, image/jpeg"                             
+                                        type="file" 
+                                        class="hidden" 
+                                        id="inpAll">
+                                    </label>
+                                </div>                      
                             </div>
-                             <input 
-                                @change="addFilefilenormal"   
-                                accept="image/png, image/jpeg"                             
-                                type="file" 
-                                class="hidden" 
-                                id="inpnormal">
-                            </label>
-                        </div>
-                    </div>  
-                    <div class="mt-6 px-16">
-                        <p class="text-force-black text-sm moserrat-semibold pt-4">Repeticiones</p>
-                        <p class="mt-2 text-xs text-force-black monserrat">Indica el número de veces que se repitió el 
-                            producto a lo ancho (<strong>X</strong>) y a lo largo (<strong>Y</strong>) para generar el patrón en las texturas de Albedo y Normal.</p>
-                    </div>  
-                    <div class="mt-2 px-16">
-                        <div class="flex ">
-                            <div class="flex items-center">
-                                <p class="font-bold text-lg pr-1">X</p>                                
-                                <input 
-                                v-model="textureWidth"
-                                class="pl-2 h-8 border w-40" type="text" placeholder="Largo">
-                            </div>
-                            <div class="flex ml-8 items-center">
-                                <p class="font-bold text-lg pr-1">Y</p>
-                                <input 
-                                v-model="textureHeight"
-                                class="pl-2 h-8 border w-40 " type="text" placeholder="Ancho">
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="px-3 " style=" margin-top:64px">
-                        <div class="h-px bg-d5 "></div>
-                    </div>    
-                    <div class="mt-5 px-16">
+                        </div> 
+                    </div>
+                </div>
+                <div class="px-3 mt-5">
+                    <div class="h-px bg-d5"></div>
+                </div>                         
+                <div class="mt-5 px-16">
                         <div class="flex justify-center">
                             <button  @click="beforePage" class="mx-2 w-44  monserrat h-8 border border-black">Anterior</button>                                
                             <button  @click="nexPage" class="mx-2 w-44 h-8 monserrat bg-black text-force-white">Siguiente</button>                                
                         </div>
                     </div>
-                    <div class="h-4"></div>
+                <div class="h-4"></div>
                 </div>
                 <!-- page 3 -->
                 <div v-if="page===2" class="overflow-y-auto">
@@ -333,28 +321,47 @@
                         </div>                    
                     </div>
                     <div class="mt-5 px-16">
-                        <p class="uppercase text-xl text-force-black moserrat-bold ">Asignar Espacios</p>
-                        <p class="mt-2 text-xs text-force-black monserrat">Selecciona dentro de los checkbox las opciones de Espacios correspondientes</p>
+                        <p class="uppercase text-xl text-force-black moserrat-bold ">IMAGEN DE INSTALACIÓN SUGERIDA</p>
+                        <p class="mt-2 text-xs text-force-black monserrat">Carga la imagen que mostrará la instalación sugerida de la serie, sólo puedes cargar una imágen.</p>
                     </div>
-                    <div class=" px-16" style="max-height:633px; min-height:633px">
-                        <div class="grid grid-cols-3 justify-center">
-                            <div v-for="aplication in getAllSpaces" :key="aplication">
-                            <div class="py-4  flex justify-start items-center">
-                                <input :checked='isDefaultActiveCheckbox(aplication.name)?true:false' type="checkbox" @change="changeTextBox(aplication.name)" class="h-4 w-4">
-                                <p class="pl-2 moserrat-semibold text-force-black text-xs">{{aplication.name}}</p>
+                    <div class="px-16 w-full mt-4">
+                        <div class="w-full min-h-341 bg-gray-200 flex justify-center items-center">
+                            <label class="w-full h-full" v-if="bigImg" for="inpSugery">
+                                <img class="w-full h-341  object-cover" :src="bigImg" alt="">
+                            </label>
+                            <div v-if="!bigImg" class="mt-2 ">
+                            <div class="flex items-center ">
+                                <div class="mx-1 cursor-pointer" style="width:174px; height:112px;">
+                                <label for="inpSugery">
+                                    <div class="flex pt-2 justify-center cursor-pointer">
+                                        <img src="../../assets/agregar_imagen.svg"  alt=""> 
+                                    </div>
+                                    <div class=" pt-2 flex justify-center cursor-pointer">
+                                     <p class="text-xxs moserrat-semibold text-force-black ">Agregar imagen </p>
+                                    </div>
+                                </label>
+                                </div>
                             </div>
-                            </div>                            
+                            <div class="flex justify-between items-center mt-1 ">
+                                <div class="w-44 flex justify-center cursor-pointer" >
+                                    <label  for="inpSugery">
+                                        <input 
+                                        multiple 
+                                        @change="onAddFiles"   
+                                        accept="image/png, image/jpeg"                             
+                                        type="file" 
+                                        class="hidden" 
+                                        id="inpSugery">
+                                    </label>
+                                </div>                      
+                            </div>
                         </div>
-                    </div>
-                    <div class="px-3">
-                      <div class=" h-px bg-d5"></div>
-                    </div>                    
+                        </div>
+                     </div>           
                     <div class=" relative bottom-0 mt-5 px-16">
                         <div class="flex justify-center">
                             <button  @click="beforePage" class="mx-2 w-44 monserrat h-8 border border-black">Anterior</button>                                
                             <button 
-                            :disabled="activeBtn"
-                            :class="!activeBtn?'':'opacity-10'"
                              @click="save" class="mx-2 w-44 h-8 bg-black monserrat text-force-white">Guardar Cambios</button>                                
                         </div>
                     </div>  
@@ -376,9 +383,14 @@ export default {
         return {
             id:"",
             activeModal:false,
+            idToDelete:0,
             activeModalAccept:false,
             modalCancel:false,
+            modalDeleteImg:false,
             isModificate:false,
+            bigImg:'',
+            files:[],
+            thumbnails:[],
             page: 0,
             img1:"",
             fileimg1:File,
@@ -400,9 +412,6 @@ export default {
     },
     computed: {
         ...mapGetters(["getAllSpaces"]),
-        activeBtn(){
-            return   !this.spaces.length > 0;
-        }
     },
     methods: {
         ...mapActions(["updateProductDB","getAllSpacesDB","deleteImgRender"]),
@@ -422,23 +431,15 @@ export default {
                 this.page=2
             }
         },
-        onDeleteImgRender(index){
-            if(index===1){
-                this.img2=""
-            }
-            if(index===2){
-                this.img3=""
-            }
-            this.deleteImgRender({
-                id:this.id,
-                index
-            })
-        },
         isDefaultActiveCheckbox(nameSpace){
            return this.spaces.find(name =>name === nameSpace)
             
         },
         onActiveModal(payload){
+            console.log(payload)    
+            this.files = payload.renders
+            this.thumbnails = payload.thumbnail
+            this.bigImg = payload.bigImg
             this.id=payload._id
             this.page=0;
             this.spaces = payload.aplications
@@ -457,15 +458,45 @@ export default {
             this.activeModal=false;
             this.modalCancel=true;
         },
-        addFileimg1(e){                    
-             this.img1 = URL.createObjectURL(e.target.files[0]);   
-             this.fileimg1 =  e.target.files[0]  
-              this.updateProductDB({
-                id:this.id,
-                render:this.fileimg1,
-                index:0
-              })
+        onAddFiles(e){                
+            console.log(e.target.files)    
+            e.target.files.forEach(file=>{
+                console.log(file)
+                this.files.push({
+                    url:URL.createObjectURL(file)
+                })
+            })
+            //  this.img1 = URL.createObjectURL(e.target.files[0]);   
+            //  this.fileimg1 =  e.target.files[0]  
+            //   this.updateProductDB({
+            //     id:this.id,
+            //     render:this.fileimg1,
+            //     index:0
+            //   })
 
+        },
+        onReplaceFile(e,id){  
+            this.files = this.files.map(file =>{
+                if(file.id === id){
+                    return {
+                        id:id,
+                        url:URL.createObjectURL(e.target.files[0])   
+                    }    
+                }
+                else{
+                    return file
+                }
+
+            })
+        },
+        deleteImg(){
+            this.files = this.files.filter(file =>file.id !== this.idToDelete)
+            this.idToDelete = 0
+            this.onModalDeleteImg(false)
+        },
+        onModalDeleteImg(visible,id=0){
+            this.idToDelete = id
+            this.modalDeleteImg  =  visible
         },
         addFileimg2(e){                    
             this.img2 = URL.createObjectURL(e.target.files[0]);   
