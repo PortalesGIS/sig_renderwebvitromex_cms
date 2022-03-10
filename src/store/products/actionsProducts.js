@@ -270,17 +270,16 @@ formdata.append("positionArray", positionArray);
 
 
   export const deleteImgRender=({commit},payload)=>{
-    commit("updateProductRender",{id:payload.id,render:"",index:payload.index})
+    // commit("updateProductRender",{id:payload.id,render:"",index:payload.index}) 
+    console.log(commit)
     let myHeaders = new Headers();
-    myHeaders.append("key",`${localStorage.getItem("token")}`);
     myHeaders.append("Access-Control-Allow-Origin",`*`);
     myHeaders.append("Content-Type",`application/json`);
     let requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: JSON.stringify({
-        id: payload.id,
-        positionImg: payload.index
+        id: payload.id
       }),
       redirect: 'follow'
     };
@@ -288,4 +287,52 @@ formdata.append("positionArray", positionArray);
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+  }
+
+  export const deleteDBImgThumbnail=({commit},payload)=>{
+    // commit("updateProductRender",{id:payload.id,render:"",index:payload.index}) 
+    console.log(commit)
+    let myHeaders = new Headers();
+    myHeaders.append("Access-Control-Allow-Origin",`*`);
+    myHeaders.append("Content-Type",`application/json`);
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify({
+        id: payload.id
+      }),
+      redirect: 'follow'
+    };
+    fetch(`${baseUrl}/api/product/deletethumbnail`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  export const updateRendersProduct = async ({commit},payload)=>{
+    console.log(payload.renders)
+    // payload.renders.forEach(e=>console.log(e))
+    const results =await  Promise.all(
+      payload.renders.map(async renderFile =>{
+        if(renderFile.file){
+          let myHeaders = new Headers();
+          myHeaders.append("Access-Control-Allow-Origin",`*`);
+          let formdata = new FormData();
+          formdata.append("file", renderFile.file);
+          let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow',
+          };
+          const response =await  fetch(`${baseUrl}/api/files/uploadfile`, requestOptions)
+          return await response.json()
+    }
+    else{
+      return {}
+    }
+      })
+    )
+    console.log(commit)
+    console.log(results)
   }

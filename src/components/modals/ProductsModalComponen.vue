@@ -55,6 +55,33 @@
         </div>
     </div>
     <div 
+        v-if="modalDeleteImgThumbnail"
+        class="z-100 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-20">
+        <div class="w-full h-full flex items-center justify-center">
+            <div class="bg-white" style="width:434px; height:200px">               
+                <div class="px-4">
+                    <div class="mt-3">
+                        <p class="text-force-black moserrat-bold text-xl font-bold uppercase">Eliminar thumbnail de LA VARIACIÓN</p>
+                    </div>
+                    <div class="mt-3">
+                        <p
+                        class="text-force-black monserrat text-sm font-normal"
+                        >¿Estás seguro que deseas eliminar esta imagen? </p>
+                        <br>
+                    </div>
+                    <div class="flex justify-evenly mt-7 ">
+                        <button 
+                        @click="onModalDeleteImgThumnail(false)"
+                        class="bg-1f text-force-white moserrat-semibold w-44 h-8 ">Cancelar</button>
+                        <button 
+                        @click="deleteImgThumbnail"
+                        class="bg-white w-44 text-force-black moserrat-semibold  h-8 border border-black ">Eliminar imagen</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div 
         v-if="activeModalAccept"
         class="z-50 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-20">
         <div class="w-full h-full flex items-center justify-center">
@@ -227,8 +254,8 @@
                     </div>                    
                 </div>
                 <div class="mt-8 px-16">
-                    <p class="uppercase text-xl text-force-black moserrat-bold ">imágenes EN ALTA DE VARIACIONES</p>
-                    <p class="mt-3 text-xs text-force-black monserrat">Carga las imágenes que visualizarán los usuarios dentro del detalle de los productos en el Renderizador. Puedes cargar hasta 20 imágenes.</p>
+                    <p class="uppercase text-xl text-force-black moserrat-bold ">THUMBNAILS DE VARIACIONES</p>
+                    <p class="mt-3 text-xs text-force-black monserrat">Carga las texturas que serán montadas dentro del Renderizador. Puedes cargar hasta 20 imágenes.</p>
                 </div>  
                 <!-- <div class="mt-5 px-16">
                     <p class="text-force-black font-semibold text-sm">Imagen del Producto</p>
@@ -248,7 +275,7 @@
                                </div>
                            </label>
                            <div v-if="item.url" class="absolute  top-0 right-0  cursor-pointer ">
-                                    <div @click="onModalDeleteImg(true,item.id)" class="top-0 right-0">
+                                    <div @click="onModalDeleteImgThumnail(true,item.id)" class="top-0 right-0">
                                         <img class="w-8" src="../../assets/icons/trash.svg" alt="">
                                     </div>                
                                </div>
@@ -260,7 +287,7 @@
                                 <div class="border border-black py-1 px-2 cursor-pointer">
                                 <p class="text-xs moserrat-semibold text-force-black ">Cambiar imagen</p>
                                 <input 
-                                @change="onReplaceFile($event,item.id)"   
+                                @change="onReplaceFileThumbnail($event,item.id)"   
                                 accept="image/png, image/jpeg"                             
                                 type="file" 
                                 class="hidden" 
@@ -290,7 +317,7 @@
                                     <label  for="inpAll">
                                         <input 
                                         multiple 
-                                        @change="onAddFiles"   
+                                        @change="onAddFilesThumbnails"   
                                         accept="image/png, image/jpeg"                             
                                         type="file" 
                                         class="hidden" 
@@ -326,8 +353,14 @@
                     </div>
                     <div class="px-16 w-full mt-4">
                         <div class="w-full min-h-341 bg-gray-200 flex justify-center items-center">
-                            <label class="w-full h-full" v-if="bigImg" for="inpSugery">
+                            <label class="w-full h-full" v-if="bigImg" >
                                 <img class="w-full h-341  object-cover" :src="bigImg" alt="">
+                                        <input 
+                                        @change="addFileBigImg"   
+                                        accept="image/png, image/jpeg"                             
+                                        type="file" 
+                                        class="hidden" 
+                                        id="inpSugery" />
                             </label>
                             <div v-if="!bigImg" class="mt-2 ">
                             <div class="flex items-center ">
@@ -346,8 +379,7 @@
                                 <div class="w-44 flex justify-center cursor-pointer" >
                                     <label  for="inpSugery">
                                         <input 
-                                        multiple 
-                                        @change="onAddFiles"   
+                                        @change="addFileBigImg"   
                                         accept="image/png, image/jpeg"                             
                                         type="file" 
                                         class="hidden" 
@@ -383,7 +415,10 @@ export default {
         return {
             id:"",
             activeModal:false,
+            modalDeleteImgThumbnail:false,
             idToDelete:0,
+            bigImgFile:File,
+            idToDeleteThumbnail:0,
             activeModalAccept:false,
             modalCancel:false,
             modalDeleteImg:false,
@@ -414,7 +449,7 @@ export default {
         ...mapGetters(["getAllSpaces"]),
     },
     methods: {
-        ...mapActions(["updateProductDB","getAllSpacesDB","deleteImgRender"]),
+        ...mapActions(["updateProductDB","getAllSpacesDB","deleteImgRender","deleteDBImgThumbnail","updateRendersProduct"]),
         nexPage() {
             if(this.page<2){
                 this.page++
@@ -430,10 +465,6 @@ export default {
             else{
                 this.page=2
             }
-        },
-        isDefaultActiveCheckbox(nameSpace){
-           return this.spaces.find(name =>name === nameSpace)
-            
         },
         onActiveModal(payload){
             console.log(payload)    
@@ -458,22 +489,28 @@ export default {
             this.activeModal=false;
             this.modalCancel=true;
         },
-        onAddFiles(e){                
-            console.log(e.target.files)    
+        onAddFiles(e){  
             e.target.files.forEach(file=>{
-                console.log(file)
                 this.files.push({
-                    url:URL.createObjectURL(file)
+                    file:file,
+                    url:URL.createObjectURL(file),
+                    id: Math.random() * (9999 - 5999) + 5999
                 })
             })
-            //  this.img1 = URL.createObjectURL(e.target.files[0]);   
-            //  this.fileimg1 =  e.target.files[0]  
-            //   this.updateProductDB({
-            //     id:this.id,
-            //     render:this.fileimg1,
-            //     index:0
-            //   })
-
+        },
+        onAddFilesThumbnails(e){
+            e.target.files.forEach(file=>{
+                this.thumbnails.push({
+                    file:file,
+                    url:URL.createObjectURL(file),
+                    id: Math.random() * (9999 - 5999) + 5999
+                })
+            })
+        },
+        addFileBigImg(e){
+            this.bigImgFile = e.target.files[0]
+            console.log(this.bigImgFile)            
+            this.bigImg  =URL.createObjectURL(this.bigImgFile )
         },
         onReplaceFile(e,id){  
             this.files = this.files.map(file =>{
@@ -486,73 +523,45 @@ export default {
                 else{
                     return file
                 }
-
+            })
+        },
+        onReplaceFileThumbnail(e,id){  
+            this.thumbnails = this.thumbnails.map(file =>{
+                if(file.id === id){
+                    return {
+                        id:id,
+                        url:URL.createObjectURL(e.target.files[0])   
+                    }    
+                }
+                else{
+                    return file
+                }
             })
         },
         deleteImg(){
+            this.deleteImgRender({id:this.idToDelete})
             this.files = this.files.filter(file =>file.id !== this.idToDelete)
             this.idToDelete = 0
             this.onModalDeleteImg(false)
+        },
+        deleteImgThumbnail(){
+            this.deleteDBImgThumbnail({id:this.idToDeleteThumbnail})
+            this.thumbnails = this.thumbnails.filter(file =>file.id !== this.idToDeleteThumbnail)
+            this.idToDeleteThumbnail = 0
+            this.onModalDeleteImgThumnail(false)
         },
         onModalDeleteImg(visible,id=0){
             this.idToDelete = id
             this.modalDeleteImg  =  visible
         },
-        addFileimg2(e){                    
-            this.img2 = URL.createObjectURL(e.target.files[0]);   
-             this.fileimg2 =  e.target.files[0]  
-             this.updateProductDB({
-                id:this.id,
-                render:this.fileimg2,
-                index:1
-              })
-        },
-        addFileimg3(e){                    
-            this.img3 = URL.createObjectURL(e.target.files[0]);   
-             this.fileimg3 =  e.target.files[0]  
-              this.updateProductDB({
-                id:this.id,
-                render:this.fileimg3,
-                index:2
-              })           
-        },
-        addFileMiniatura(e){                    
-             this.smallPicture = URL.createObjectURL(e.target.files[0]);   
-             this.fileSmallPicture =  e.target.files[0]  
-             this.updateProductDB({
-                id:this.id,
-                miniatura:this.fileSmallPicture,
-              })
-        },
-        addFilefilealbedo(e){                    
-             this.albedo = URL.createObjectURL(e.target.files[0]);   
-             this.filealbedo =  e.target.files[0]  
-             this.updateProductDB({
-                id:this.id,
-                albedo:this.filealbedo,
-              })
-        },
-        addFilefilenormal(e){                    
-             this.normal = URL.createObjectURL(e.target.files[0]);   
-             this.filenormal =  e.target.files[0]
-             this.updateProductDB({
-                id:this.id,
-                normal:this.filenormal,
-              })  
-        },
-        changeTextBox(value){
-            const inde = this.spaces.findIndex(elm =>elm ===value)
-            if(inde>=0){
-                this.spaces.splice(inde,1)
-            }
-            else{
-             this.spaces.push(value)
-             this.onModificateSomething()
-            }
+        onModalDeleteImgThumnail(visible,id=0){
+            this.idToDeleteThumbnail = id
+            this.modalDeleteImgThumbnail  =  visible
         },
         save(){
-            this.activeModal = false;
-            this.activeModalAccept = true;
+            this.updateRendersProduct({renders: this.files})
+            // this.activeModal = false;
+            // this.activeModalAccept = true;
         },
         onModificateSomething(){
             this.isModificate=true
