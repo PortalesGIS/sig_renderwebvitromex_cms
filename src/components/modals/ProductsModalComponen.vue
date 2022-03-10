@@ -130,7 +130,7 @@
                     </div>                    
                 </div>
                 <div class="mt-8 px-16">
-                    <p class="uppercase text-xl text-force-black moserrat-bold ">imágenes EN ALTA DE VARIACIONES</p>
+                    <p class="uppercase text-xl text-force-black moserrat-bold ">imágenes EN ALTA DE VARIACIONES </p>
                     <p class="mt-3 text-xs text-force-black monserrat">Carga las imágenes que visualizarán los usuarios dentro del detalle de los productos en el Renderizador. Puedes cargar hasta 20 imágenes.</p>
                 </div>  
                 <!-- <div class="mt-5 px-16">
@@ -449,7 +449,9 @@ export default {
         ...mapGetters(["getAllSpaces"]),
     },
     methods: {
-        ...mapActions(["updateProductDB","getAllSpacesDB","deleteImgRender","deleteDBImgThumbnail","updateRendersProduct"]),
+        ...mapActions(["updateProductDB","getAllSpacesDB",
+        "deleteImgRender","deleteDBImgThumbnail","UpdateBigImgDB",
+        "updateRendersProduct","updateThumbnailsProduct"]),
         nexPage() {
             if(this.page<2){
                 this.page++
@@ -471,7 +473,7 @@ export default {
             this.files = payload.renders
             this.thumbnails = payload.thumbnail
             this.bigImg = payload.bigImg
-            this.id=payload._id
+            this.id=payload.id
             this.page=0;
             this.spaces = payload.aplications
             this.name=payload.name
@@ -559,27 +561,24 @@ export default {
             this.modalDeleteImgThumbnail  =  visible
         },
         save(){
-            this.updateRendersProduct({renders: this.files})
-            // this.activeModal = false;
-            // this.activeModalAccept = true;
+            this.activeModal = false;
+            this.activeModalAccept = true;
         },
         onModificateSomething(){
             this.isModificate=true
         },
         onAccept(){
+            this.updateRendersProduct({renders: this.files,idProduct:this.id})
+            this.updateThumbnailsProduct({thumbnails: this.thumbnails,idProduct:this.id})
+            this.UpdateBigImgDB({file:this.bigImgFile,idProduct:this.id})
             this.onCloseModal()
-              this.isModificate=false;
-            this.updateProductDB({
-                id:this.id,
-                name:this.name,
-                textureHeight:this.textureHeight,                
-                textureWidth:this.textureWidth,
-                spaces:this.spaces
-            })
+            this.isModificate=false;
+            this.file= File
+            this.bigImgFile= File
             this.id="";
             this.activeModal=false;
             this.activeModalAccept = false;
-             this.modalCancel =false;
+            this.modalCancel =false;
             this.page= 0;
             this.img1="";
             this.fileimg1=File;

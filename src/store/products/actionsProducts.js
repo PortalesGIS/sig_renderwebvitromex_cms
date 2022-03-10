@@ -308,9 +308,8 @@ formdata.append("positionArray", positionArray);
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
-
+// eslint-disable-next-line no-unused-vars
   export const updateRendersProduct = async ({commit},payload)=>{
-    console.log(payload.renders)
     // payload.renders.forEach(e=>console.log(e))
     const results =await  Promise.all(
       payload.renders.map(async renderFile =>{
@@ -333,6 +332,109 @@ formdata.append("positionArray", positionArray);
     }
       })
     )
-    console.log(commit)
-    console.log(results)
+    const rednersUpdated = await Promise.all(
+      results.map(async imageUpload=>{
+        if(imageUpload.msg==="ok"){
+          let myHeaders = new Headers();
+          myHeaders.append("Access-Control-Allow-Origin",`*`);
+          myHeaders.append("Content-Type",`application/json`);
+          let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({
+              id: payload.idProduct,
+              url:imageUpload.url
+            }),
+            redirect: 'follow'
+          };
+          const res =  await fetch(`${baseUrl}/api/product/addrender`, requestOptions)
+          return await res.json()
+        }
+      })
+    )
+    console.log(rednersUpdated)    
+  }
+// eslint-disable-next-line no-unused-vars
+  export const updateThumbnailsProduct = async ({commit},payload)=>{
+    const results =await  Promise.all(
+      payload.thumbnails.map(async renderFile =>{
+        if(renderFile.file){
+          let myHeaders = new Headers();
+          myHeaders.append("Access-Control-Allow-Origin",`*`);
+          let formdata = new FormData();
+          formdata.append("file", renderFile.file);
+          let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow',
+          };
+          const response =await  fetch(`${baseUrl}/api/files/uploadfile`, requestOptions)
+          return await response.json()
+    }
+    else{
+      return {}
+    }
+      })
+    )
+    const thumbnalisUpdated = await Promise.all(
+      results.map(async imageUpload=>{
+        if(imageUpload.msg==="ok"){
+          let myHeaders = new Headers();
+          myHeaders.append("Access-Control-Allow-Origin",`*`);
+          myHeaders.append("Content-Type",`application/json`);
+          let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({
+              id: payload.idProduct,
+              url:imageUpload.url
+            }),
+            redirect: 'follow'
+          };
+        const resp =  await fetch(`${baseUrl}/api/product/addthumbnail`, requestOptions)
+        return await resp.json()
+        }
+      })
+    )
+    console.log(thumbnalisUpdated)  
+  }
+// eslint-disable-next-line no-unused-vars
+  export const UpdateBigImgDB = async ({commit},payload) =>{
+    console.log(payload)
+    if(payload.file.size){
+      console.log(payload)
+      let myHeaders = new Headers();
+      myHeaders.append("Access-Control-Allow-Origin",`*`);
+      let formdata = new FormData();
+      formdata.append("file", payload.file);
+      let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow',
+      };
+      const response =await  fetch(`${baseUrl}/api/files/uploadfile`, requestOptions)
+      const result = await response.json()
+      console.log(result)
+      // 
+      let myHeaderssave = new Headers();
+      myHeaderssave.append("Access-Control-Allow-Origin",`*`);
+      myHeaderssave.append("Content-Type",`application/json`);
+      let requestOptionsToSave = {
+        method: 'POST',
+        headers: myHeaderssave,
+        body: JSON.stringify({
+          id: payload.idProduct,
+          url:result.url
+        }),
+        redirect: 'follow'
+      };
+    const resp =  await fetch(`${baseUrl}/api/product/addbigimage`, requestOptionsToSave)
+    const r= await resp.json()
+    console.log(r)
+    }
+    else{
+      console.log("no bigimg")
+    }
   }
