@@ -102,7 +102,7 @@ export default {
         openModalForEditing(payload) {
             this.name=payload.name
             this.img=payload.img
-            this.id=payload._id
+            this.id=payload.id
             this.isOpen =true
         },
         addFileImg(e){                    
@@ -111,7 +111,6 @@ export default {
         },
         onSave(){           
             this.onSaveNew({
-                name:this.name,
                 file:this.fileImg,
                 id:this.id
             })

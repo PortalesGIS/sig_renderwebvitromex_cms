@@ -41,10 +41,9 @@ export const getAllSeriesDB = async ({commit})=>{
   export const UpdateSerieImgDB = async ({commit,getters},payload) =>{
     // actualizar en local
       const series =  getters.getAllSeriesFilter
-      console.log(series)
       const seriesUpdates = []
       series.forEach((ser)=>{
-        if(ser._id === payload.id){
+        if(ser.id === payload.id){
           seriesUpdates.push({...ser, img:URL.createObjectURL(payload.file)})          
         }
         else{
@@ -65,11 +64,25 @@ export const getAllSeriesDB = async ({commit})=>{
       body: formdata,
       redirect: 'follow'
     };
-    fetch(`${baseUrl}/api/files/uploadfile`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-      console.log(commit)
+    const response = await fetch(`${baseUrl}/api/files/uploadfile`, requestOptions)
+    const res = await response.json()
+    // 
+    let myHeaderssave = new Headers();
+      myHeaderssave.append("Access-Control-Allow-Origin",`*`);
+      myHeaderssave.append("Content-Type",`application/json`);
+      let requestOptionsToSave = {
+        method: 'POST',
+        headers: myHeaderssave,
+        body: JSON.stringify({
+          id: payload.id,
+          url:res.url
+        }),
+        redirect: 'follow'
+      };
+    const resp =  await fetch(`${baseUrl}/api/series/uploadimg`, requestOptionsToSave)
+    const r= await resp.json()
+    console.log(r)
+      
   }
 
   export const filterAlphabetSeries = ({commit,getters},payload)=>{
