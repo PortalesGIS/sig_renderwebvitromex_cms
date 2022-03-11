@@ -30,7 +30,7 @@
         <div class="col-span-1">
           <p class="text-force-black text-sm py-2 monserrat">
             <input 
-            @change="selectCheckBox(user._id)"
+            @change="selectCheckBox(user.id)"
             type="checkbox" /></p>
         </div>
         <div class="">
@@ -44,7 +44,7 @@
         </div>
         <div class="col-span-2">
           <p class="text-force-black text-sm py-2 monserrat overflow-x-hidden">
-            {{ user.dateCreated }}
+            {{ user.createdAt.substring(0,10) }}
           </p>
         </div>
       </div>

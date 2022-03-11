@@ -66,6 +66,7 @@ export const getAllAdminsDB = async ({commit})=>{
 
   export const deleteAdmin =({commit},idsAdmins)=>{
     idsAdmins.map(async (idAdmin) => {
+      console.log(idAdmin)
       let myHeaders = new Headers();
       myHeaders.append("key",`${localStorage.getItem("token")}`);
       myHeaders.append("Content-Type",`application/json`);
@@ -102,7 +103,7 @@ export const getAllAdminsDB = async ({commit})=>{
         .then(response => response.json())
         .then((result) =>{
           if(!result.error){
-            commit("addAdmin",{name:payload.name,email:payload.email,dateCreated:new Date().toISOString().slice(0,10)}) 
+            commit("addAdmin",{name:payload.name,email:payload.email,createdAt:new Date().toISOString().slice(0,10)}) 
           }
           else{
             alert("Email ya registrado")
