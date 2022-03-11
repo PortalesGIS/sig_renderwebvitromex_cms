@@ -57,8 +57,8 @@ export const getAllAdminsDB = async ({commit})=>{
   export const adminFilterDates = ({commit,getters},{dateOne="",dateTwo=""})=>{
     const result =  getters.getAllAdminsFilter.filter(
       product => {
-        return new Date(dateOne).getTime() <= new Date(product.dateCreated).getTime() 
-        && new Date(dateTwo).getTime() >= new Date(product.dateCreated).getTime()
+        return new Date(dateOne).getTime() <= new Date(product.createAt).getTime() 
+        && new Date(dateTwo).getTime() >= new Date(product.createAt).getTime()
       }
     )
     commit("setAllAdmins",{admins:result})

@@ -63,7 +63,7 @@ export default {
     methods: {
         ...mapActions(["filterUsersForCountry","filterUsersForCity","userFilterDates"]),
         onexportDocument(){
-            const fields = ["_id","name","lastName","state","email","country","city","createdAt"]
+            const fields = ["id","name","lastName","state","email","country","city","createdAt"]
             const opts = {fields}    
             try {
                 const parser = new Parser(opts);
