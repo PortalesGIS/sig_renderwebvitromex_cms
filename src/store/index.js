@@ -69,6 +69,10 @@ export default createStore({
     listFormats:[],
     isRegisterAdmin: false,
     uiOpenModalAdmin: false,
+    uiErrorFormLogin: {
+      email: false,
+      password: false
+    }
   },
   mutations: {
     ...mutationsProducts,
