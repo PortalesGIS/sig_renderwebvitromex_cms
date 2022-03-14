@@ -161,13 +161,13 @@
       <div class="h-1/6  overflow-auto ">      
           <div class="h-full w-full flex items-end ">          
               <div class="w-full">
-                  <div class="flex w-full bg-user-background py-4">
+                  <div class="flex w-full py-4">
                   <div class="mx-4"><img src="../../assets/perfil.svg" alt=""></div>
                   <div class="flex items-center">
                       <p class="text-force-white monserrat text-sm">{{nameAdmin}}</p>
                     </div>
               </div>
-              <div class="w-full flex justify-center">
+              <div class="w-full flex justify-center bg-user-background">
                    <button 
                    @click="exit()"
                    class="text-xs moserrat-semibold text-white py-4 focus:outline-none">Cerrar Sesión                       
@@ -362,7 +362,7 @@ export default {
         },
         colorText(view){
             if(this.getVieWindow===view){
-                return 'text-black'                
+                return 'text-black font-semibold'                
             }
             else{
                 return'text-white'
