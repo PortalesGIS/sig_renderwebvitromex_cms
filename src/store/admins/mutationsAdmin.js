@@ -12,11 +12,23 @@ export const addAdmin = (state,payload)=>{
     const newList = [...state.listAdmins,payload]
     state.listAdmins = newList
     state.listAdminsFilter = newList
+    state.isRegisterAdmin = false
+    state.uiOpenModalAdmin = false
 }
+
+export const errorCreateAdmin = (state,payload)=>{
+    state.isRegisterAdmin = payload.errorCreateAdmin
+}
+
 export const quitAdmin = (state,payload)=>{
     const newList = state.listAdmins.filter(admin=>payload !==admin._id)
     state.listAdmins = newList
     state.listAdminsFilter = newList
+}
+
+export const openAdminModal = (state,payload)=>{
+    state.isRegisterAdmin = payload.isRegisterAdmin
+    state.uiOpenModalAdmin = payload.uiOpenModal
 }
 
 export const setAdminStateLogin=(state,payload)=>{

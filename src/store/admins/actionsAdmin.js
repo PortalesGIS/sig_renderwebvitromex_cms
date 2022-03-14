@@ -86,6 +86,10 @@ export const getAllAdminsDB = async ({commit})=>{
       
   }
 
+  export const openModalAdmin =({commit},payload)=>{
+    commit("openAdminModal", payload) 
+  }
+
   export const createAdmin =({commit},payload)=>{
     let myHeaders = new Headers();
       myHeaders.append("key",`${localStorage.getItem("token")}`);
@@ -106,11 +110,11 @@ export const getAllAdminsDB = async ({commit})=>{
             commit("addAdmin",{name:payload.name,email:payload.email,createdAt:new Date().toISOString().slice(0,10)}) 
           }
           else{
-            alert("Email ya registrado")
+            commit("errorCreateAdmin",{errorCreateAdmin: true}) 
+            // alert("Email ya registrado")
           }
         }) 
         .catch(error => console.log('error', error));
-          
   }
 
   export const exitCms = ()=>{
