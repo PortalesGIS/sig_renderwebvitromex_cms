@@ -5,7 +5,11 @@ module.exports = {
     extend: {
       height: {
         '341': '341px',
-      }
+      },
+      
+    fontSize: {
+      xxs:'10px'
+    },
     },
     maxHeight:{
       "120":"36rem",
@@ -78,12 +82,13 @@ module.exports = {
       "6f":"var(--color-base-background)",
       "6e":"#6e6e6e",
       "1f":"#1F1F1F",
+      "f1":"#F1F1F1",
       "c4":"#C4C4C4",
       "d5":"#D5D5D5",
       "d4":"#D4D4D4",
       "7d":"#7D7D7D",
       "7db":"#7DBCDF",
-      "4f":"#4F4F4F",
+      "4f":"#686868",
     }),
     textColor:theme=>("colors"),
     textColor:{
@@ -122,9 +127,6 @@ module.exports = {
      '90': '.9',
      '99': '.99',
      '100': '1',
-    },
-    fontSize: {
-      xxs:'10px'
     },
     zIndex: {
       '100': '100',
