@@ -1,8 +1,9 @@
 <template>
-<div class="h-screen w-full bg-6f overflow-hidden">
+<!-- //! change background bg-rock-table -->
+<div class="h-screen w-full bg-rock-table bg-cover bg-no-repeat bg-center overflow-hidden">
     <div class="h-5 xl:h-16"></div>    
-    <div class="h-5/6  bg-6f shadow-10xl overflow-hidden">
-    <div class="overflow-hidden">
+    <div class="h-5/6 overflow-hidden">
+    <div class="overflow-hidden ">
       <p class="uppercase monserrat text-center text-5xl text-white font-normal pl-10 py-7">
       Usuarios
       </p>

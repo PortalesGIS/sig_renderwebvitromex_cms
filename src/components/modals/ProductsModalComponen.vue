@@ -390,7 +390,7 @@
                         </div>
                         </div>
                      </div>           
-                    <div class=" relative bottom-0 mt-5 px-16">
+                    <div class=" relative bottom-0 mt-44 px-16">
                         <div class="flex justify-center">
                             <button  @click="beforePage" class="mx-2 w-44 monserrat h-8 border border-black">Anterior</button>                                
                             <button 

@@ -71,6 +71,9 @@ module.exports = {
       '2xl': '1736px',
       // => @media (min-width: 1536px) { ... }
     },
+    backgroundImage: {
+      'rock-table': "url('./assets/background/rocas-min2.jpg')",
+    },
     backgroundColor:theme=>({
       ...theme("colors"),
       "fondo":"#E5E5E5",
