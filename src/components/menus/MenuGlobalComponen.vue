@@ -8,7 +8,8 @@
       <div class="h-screen w-full">
       <div class="w-full max-w-17 h-full bg-1d overflow-auto shadow-3xl  opacity-99">
       <div class="h-5/6 overflow-auto ">
-     <div class="flex  justify-between py-4  bg-menu ">
+      <!-- //* commented slider button  -->
+     <!-- <div class="flex  justify-between py-4  bg-menu ">
         <div 
             class="w-4 h-4 cursor-pointer"></div>
         <div 
@@ -17,7 +18,7 @@
                 <img v-if="getPageState" src='../../assets/menu.svg' alt="">
                 <img v-else src="../../assets/menu_b.svg" alt="">                
             </div>
-      </div>
+      </div> -->
       <div class="flex justify-evenly items-center mx-6 mt-10 cursor-pointer" >          
           <div class="w-full h-20 max-h-32px max-w-170px ">
               <img v-if="getPageState" src="../../assets/Logo.svg" alt="">              
