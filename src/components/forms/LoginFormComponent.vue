@@ -34,7 +34,7 @@
               required
               placeholder="Ingresa tu correo electrónico"
             />
-            <div :class="true ? 'visible absolute -bottom-4' : 'invisible'">
+            <div :class="false ? 'visible absolute -bottom-4' : 'invisible'">
             <p class="font-medium" style="font-size: 13px; color: #dc7575">
               El correo que ingresaste no existe
             </p>
@@ -55,7 +55,7 @@
              <img v-if="isShowPassword" src="../../assets/form/ojosabierto.svg" alt="ojo abierto">
              <img v-else src="../../assets/form/ojoscerrado.svg" alt="ojo cerrado">
             </div>
-            <div :class="true ? 'visible absolute' : 'invisible'">
+            <div :class="false ? 'visible absolute' : 'invisible'">
               <p class="font-medium" style="font-size: 13px; color: #dc7575">
                 La contraseña que ingresaste es incorrecta.
               </p>

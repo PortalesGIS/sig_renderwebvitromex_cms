@@ -19,7 +19,7 @@
                 <img v-else src="../../assets/menu_b.svg" alt="">                
             </div>
       </div> -->
-      <div class="flex justify-evenly items-center mx-6 mt-10 cursor-pointer" >          
+      <div class="flex justify-evenly items-center mx-6 mt-10" >          
           <div class="w-full h-20 max-h-32px max-w-170px ">
               <img v-if="getPageState" src="../../assets/Logo.svg" alt="">              
               <img v-else class="-mt-4" src="../../assets/ARKO_LOGO.svg" alt="">              
