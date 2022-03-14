@@ -95,6 +95,7 @@
            <div v-if="(index >= startData && index <= endData)">
           <div class="pl-10 grid grid-cols-12  "
            :class="(index%2)?'bg-white':''">
+           <!-- //* color in number table -->
           <div class="">
               <p class="text-force-black text-sm font-normal py-2 monserrat">{{index+1}}</p>
           </div>
