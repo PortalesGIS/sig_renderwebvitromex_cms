@@ -6,7 +6,7 @@ import {baseUrl} from "../../types/data"
 
 export const getAllproductsdb = async({commit})=>{
   
-    await fetch(`${baseUrl}/api/product`,{
+    await fetch(`${baseUrl}/api/product/complete`,{
       method: "GET",
       headers:{
         'Content-Type': 'application/json'
@@ -25,12 +25,12 @@ export const getAllproductsdb = async({commit})=>{
     await fetch(`${baseUrl}/api/product/chagestatus`,{
       method:"POST",
       headers:{
-        "key":`${localStorage.getItem("token")}`,
+        // "key":`${localStorage.getItem("token")}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id: product._id,
-        available: !product.available
+        id: product.id,
+        available:!product.available
       })
     })
     .then(result => result.json())

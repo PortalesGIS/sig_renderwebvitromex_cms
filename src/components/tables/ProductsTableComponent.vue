@@ -622,9 +622,8 @@ export default {
     },
     verifyProductIsComplete(product) {
       if (
-        product.smallPicture &&
-        this.countRendersProduct(product) >= 1 &&
-        this.countImgsProduct(product) === 2 &&
+        product.renders.length >0 &&
+        product.thumbnail.length >0 &&
         !product.sized.includes(".")
       ) {
         return true;

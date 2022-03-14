@@ -1,6 +1,6 @@
 export const ChangeOneProduct = (state,payload)=>{
     const arrayupdated = state.productsForFilter.map(product =>{
-        if(product._id === payload._id){
+        if(product.id === payload.id){
             return payload
         }
         else{
@@ -8,7 +8,7 @@ export const ChangeOneProduct = (state,payload)=>{
         }
     })
     const arrayupdatedproducts = state.products.map(product =>{
-        if(product._id === payload._id){
+        if(product.id === payload.id){
             return payload
         }
         else{
