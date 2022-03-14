@@ -23,7 +23,7 @@
                         <input type="text" 
                         required
                         v-model="name"
-                        class="border w-full h-7 px-2"
+                        class="border w-full h-7 px-2 focus:border-black focus:outline-none focus:shadow-outline"
                         placeholder="Escribe el nombre del nuevo administrador">
                     </div>                               
                     <div class="pt-6">
@@ -32,7 +32,7 @@
                     <div class="pt-3">
                         <input type="email" 
                         required
-                        class="border w-full h-7 px-2"
+                        :class="colorInput"
                         v-model="email"
                         placeholder="Indica el correo electrónico del nuevo administrador">
                     </div>   
@@ -72,6 +72,8 @@ export default {
         ...mapActions(["createAdmin", "openModalAdmin"]),
         closeModal() {
             // this.isOpen =false
+            this.email="";
+            this.name="";
             this.openModalAdmin({uiOpenModal: false, isRegisterAdmin: false})
         },
         openModal() {
@@ -80,16 +82,30 @@ export default {
         },
         onSaveNewAdmin (){
             this.createAdmin({name:this.name,email:this.email})
-            this.email="";
-            this.name="";
+            // this.email="";
+            // this.name="";
             // this.closeModal()
         }
     },
     computed: {
         ...mapGetters({
             getErrorCreateAdmins: 'getErrorCreateAdmins',
-            getUiOpenModalAdmin: 'getUiOpenModalAdmin'
+            getUiOpenModalAdmin: 'getUiOpenModalAdmin',
+            getAllAdmins: 'getAllAdmins',
         }),
+        colorInput(){
+            if (this.getErrorCreateAdmins) {
+                return 'border w-full h-7 px-2 border-red-500 focus:border-red-500 focus:outline-none focus:shadow-outline'
+            }else {
+                return 'border w-full h-7 px-2 focus:border-black focus:outline-none focus:shadow-outline'
+            }
+        }
+    },
+    watch: {
+        getAllAdmins(){
+            this.email="";
+            this.name="";
+        }
     }
 
 }
