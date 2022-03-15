@@ -125,7 +125,7 @@
                 <div v-if="page===0"> 
                 <div class="mt-4 w-full h-20 bg-1f">
                     <div class="pl-16 pt-3">
-                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Serie</p>
+                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Producto</p>
                         <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
                     </div>                    
                 </div>
@@ -249,7 +249,7 @@
                 <div v-if="page===1">
                 <div class="mt-4 w-full h-20 bg-1f">
                     <div class="pl-16 pt-3">
-                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Serie</p>
+                        <p class="mt-2 text-force-white text-xs monserrat font-normal">Producto</p>
                         <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
                     </div>                    
                 </div>
