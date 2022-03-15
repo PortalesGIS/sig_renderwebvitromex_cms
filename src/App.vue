@@ -8,7 +8,7 @@
   <div class="hidden sm:hidden md:hidden lg:hidden xl:block">xl</div>
 </div>
   <p class="bg-red-400 text-sm">
-    V 0.15.3
+    V 0.15.5
   </p>
   </div>
  <div :class="getPageState?'':'theme-arko'">

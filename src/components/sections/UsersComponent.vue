@@ -4,7 +4,7 @@
     <div class="h-5 xl:h-16"></div>    
     <div class="h-5/6 overflow-hidden">
     <div class="overflow-hidden ">
-      <p class="uppercase monserrat text-center text-5xl text-white font-normal pl-10 py-7">
+      <p class="uppercase monserrat font-bold text-center text-5xl text-white pl-10 py-7">
       Usuarios
       </p>
     </div>

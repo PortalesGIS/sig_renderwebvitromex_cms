@@ -4,7 +4,7 @@
     <div class="h-5 xl:h-16"></div>    
     <div class="h-5/6 overflow-hidden">
     <div class="overflow-hidden">
-      <p class="uppercase text-5xl text-center monserrat text-white font-normal pl-10 py-7">
+      <p class="uppercase font-bold text-5xl text-center monserrat text-white pl-10 py-7">
       Administradores
       </p>
     </div>
