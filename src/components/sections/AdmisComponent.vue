@@ -1,6 +1,6 @@
 <template>
 <!-- //! change background bg-rock-table -->
-<div class="h-screen w-full bg-rock-table bg-cover bg-no-repeat bg-center overflow-hidden">
+<div class="h-screen w-full overflow-hidden">
     <div class="h-5 xl:h-16"></div>    
     <div class="h-5/6 overflow-hidden">
     <div class="overflow-hidden">
