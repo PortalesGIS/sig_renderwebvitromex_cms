@@ -9,6 +9,11 @@ export const getAllAdmins =(state)=>{
   export const getErrorCreateAdmins =(state)=>{
     return state.isRegisterAdmin;
   }
+
   export const getUiOpenModalAdmin =(state)=>{
     return state.uiOpenModalAdmin;
+  }
+
+  export const uiErrorFormLoginState =(state)=>{
+    return state.uiErrorFormLogin;
   }

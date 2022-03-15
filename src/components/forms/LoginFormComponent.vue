@@ -34,7 +34,7 @@
               required
               placeholder="Ingresa tu correo electrónico"
             />
-            <div :class="false ? 'visible absolute -bottom-4' : 'invisible'">
+            <div :class="uiErrorFormLoginState.email ? 'absolute -bottom-4 z-50' : 'hidden'">
             <p class="font-medium" style="font-size: 13px; color: #dc7575">
               El correo que ingresaste no existe
             </p>
@@ -50,12 +50,12 @@
               v-model="password"
               :type="isShowPassword ? 'text' : 'password'"
               placeholder="Ingresa tu contraseña"
-            />
+            >
             <div class="absolute h-5 w-5 bottom-1.5 right-1 cursor-pointer z-20" @click="showPassword">
              <img v-if="isShowPassword" src="../../assets/form/ojosabierto.svg" alt="ojo abierto">
              <img v-else src="../../assets/form/ojoscerrado.svg" alt="ojo cerrado">
             </div>
-            <div :class="false ? 'visible absolute' : 'invisible'">
+            <div :class="uiErrorFormLoginState.password ? 'absolute z-50' : 'hidden'">
               <p class="font-medium" style="font-size: 13px; color: #dc7575">
                 La contraseña que ingresaste es incorrecta.
               </p>
@@ -72,7 +72,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   props: {
     view: {
@@ -100,8 +100,13 @@ export default {
       // this.email="";
     },
     showPassword() {
-     this.isShowPassword = !this.isShowPassword
+      this.isShowPassword = !this.isShowPassword
     }
+  },
+  computed: {
+    ...mapGetters({
+      uiErrorFormLoginState: 'uiErrorFormLoginState'
+    })
   }
 };
 </script>

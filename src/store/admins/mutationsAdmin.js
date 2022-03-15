@@ -33,8 +33,26 @@ export const openAdminModal = (state,payload)=>{
 
 export const setAdminStateLogin=(state,payload)=>{
     state.adminStateLogin = payload.ok;
+    state.uiErrorFormLogin = {
+        email: false,
+        password: false
+    }
     localStorage.setItem("isLogged","true");
     localStorage.setItem("nameUser",payload.name);
     localStorage.setItem("token",payload.token);
     router.push("/");
-  }
+}
+
+export const errorAdminLogin=(state,payload)=>{
+    if(payload.type){
+        state.uiErrorFormLogin = {
+            email: false,
+            password: true
+        }
+    }else{
+        state.uiErrorFormLogin = {
+            email: true,
+            password: false
+        }
+    }
+}
