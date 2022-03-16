@@ -42,15 +42,15 @@
                 </div>
                 <div class="grid grid-cols-12  w-full  pt-1 items-center justify-center">
                     <div class="col-span-3 text-sm flex justify-start">
-                        <p class="text-center ">
+                        <p class="text-center monserrat" :class="(page === 0)?'text-force-black':'text-6etext'">
                         Imágenes en alta de variaciones
                         </p>
                         </div>
                     <div class="col-span-2 text-sm"></div>
-                    <div class="col-span-2 text-sm text-center">Thumbnails de variaciones</div>
+                    <div class="col-span-2 text-sm text-center monserrat" :class="(page === 1)?'text-force-black':'text-6etext'">Thumbnails de variaciones</div>
                     <div class="col-span-2 text-sm"></div>
                     <div class="col-span-3 text-sm flex justify-center">
-                        <p class="text-center ">
+                        <p class="text-center monserrat" :class="(page === 2)?'text-force-black':'text-6etext'">
                          Instalación <br> sugerida
                         </p></div>
                 </div>  

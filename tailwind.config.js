@@ -99,7 +99,9 @@ module.exports = {
       "white":"var(--color-text)",
       "black":"var(--color-text-back)",
       "force-black":"#000000",
-      "force-white":"#ffffff"
+      "force-white":"#ffffff",
+      "6etext":"#6E6E6E",
+      "1f":"#1F1F1F"
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',

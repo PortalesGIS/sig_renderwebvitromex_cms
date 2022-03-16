@@ -175,15 +175,15 @@
                 </div> 
                 </div>
                     <div v-if="files.length<20" >
-                           <div class="mt-2 bg-gray-200">
+                           <div class="mt-2 bg-f5">
                             <div class="flex items-center ">
                                 <div class="mx-1 cursor-pointer" style="width:174px; height:112px;">
                                 <label for="inpAll">
-                                    <div class="flex pt-2 justify-center cursor-pointer">
-                                        <img src="../../assets/agregar_imagen.svg"  alt=""> 
+                                    <div class="flex pt-4 justify-center cursor-pointer">
+                                        <img src="../../assets/agregar_imagen.svg" class="w-16 "  alt=""> 
                                     </div>
                                     <div class=" pt-2 flex justify-center cursor-pointer">
-                                     <p class="text-xxs moserrat-semibold text-force-black ">Agrega una o más imágenes</p>
+                                     <p class="text-xxs monserrat text-6etext ">Agrega una o más imágenes</p>
                                     </div>
                                 </label>
                                 </div>
@@ -299,15 +299,15 @@
                 </div> 
                 </div>
                     <div v-if="thumbnails.length<20" >
-                           <div class="mt-2 bg-gray-200">
+                           <div class="mt-2 bg-f5">
                             <div class="flex items-center ">
                                 <div class="mx-1 cursor-pointer" style="width:174px; height:112px;">
                                 <label for="inpAll">
-                                    <div class="flex pt-2 justify-center cursor-pointer">
-                                        <img src="../../assets/agregar_imagen.svg"  alt=""> 
+                                    <div class="flex pt-4 justify-center cursor-pointer">
+                                        <img src="../../assets/agregar_imagen.svg" class="w-16 "  alt=""> 
                                     </div>
                                     <div class=" pt-2 flex justify-center cursor-pointer">
-                                     <p class="text-xxs moserrat-semibold text-force-black ">Agrega una o más imágenes</p>
+                                     <p class="text-xxs monserrat text-6etext ">Agrega una o más imágenes</p>
                                     </div>
                                 </label>
                                 </div>
