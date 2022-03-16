@@ -10,17 +10,17 @@
                     class=" mr-3 mt-3 cursor-pointer w-3 h-3" src="../../assets/cerrar.svg" alt="">
                 </div>
                 <div class="flex justify-start pl-6">
-                    <p class="uppercase text-xl font-bold ">
+                    <p class="uppercase text-xl font-bold monserrat">
                            Editar serie
                     </p>
                 </div>                
-                <div  class="flex justify-center pt-5 pb-3">
-                    <p class="text-xl font-bold">
+                <div  class="flex justify-center pt-5 pb-1">
+                    <p class="text-xl font-bold monserrat">
                         {{(name)?name:"Not Found"}}
                         </p>
                 </div>
                 <div  class="flex justify-center ">
-                     <p class="text-sm">Imagen Miniatura</p>
+                     <p class="text-sm monserrat">Imagen Miniatura</p>
                 </div>
                 <div  class="flex justify-center pt-3 ">                                       
                     <label for="inpserie">
@@ -34,7 +34,7 @@
                         >                        
                         </div>
                         <div class="border mt-2 border-black ">
-                        <p class="px-2 cursor-pointer" style="color:#1f1f1f">Cambiar imagen</p>
+                        <p class="px-2 cursor-pointer text-center monserrat" style="color:#1f1f1f; font-size: 12px;">Cambiar imagen</p>
                             </div>                        
                     </div>
                     <div v-else>
@@ -44,7 +44,7 @@
                         style="width:120px;height:120px" alt="">                        
                         </div>                        
                         <div class="border mt-2 border-black ">
-                        <p class="px-2 cursor-pointer" style="color:#1f1f1f">Cambiar imagen</p>
+                        <p class="px-2 cursor-pointer text-center monserrat" style="color:#1f1f1f; font-size: 12px;">Cambiar imagen</p>
                             </div>                        
                     </div>
                     <input 
@@ -58,7 +58,7 @@
                 <div  class="flex justify-center py-9">
                     <button 
                     @click="onSave"
-                    class="w-44 h-8 bg-1f text-force-white">
+                    class="w-44 h-8 bg-1f text-force-white monserrat">
                         Guardar
                         </button>                    
                 </div>
