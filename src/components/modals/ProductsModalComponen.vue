@@ -123,8 +123,8 @@
                 <HeaderModalProductsVue :page="page"/>
                 <!-- Page 1 -->
                 <div v-if="page===0"> 
-                <div class="mt-4 w-full h-20 bg-1f">
-                    <div class="pl-16 pt-3">
+                <div class="mt-4 w-full h-16 bg-1f">
+                    <div class="pl-16 pt-1">
                         <p class="mt-2 text-force-white text-xs monserrat font-normal">Producto</p>
                         <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
                     </div>                    
@@ -247,8 +247,8 @@
                 </div>
                 <!-- page 2 -->
                 <div v-if="page===1">
-                <div class="mt-4 w-full h-20 bg-1f">
-                    <div class="pl-16 pt-3">
+                <div class="mt-4 w-full h-16 bg-1f">
+                    <div class="pl-16 pt-1">
                         <p class="mt-2 text-force-white text-xs monserrat font-normal">Producto</p>
                         <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
                     </div>                    
@@ -332,24 +332,24 @@
                     <div class="h-px bg-d5"></div>
                 </div>                         
                 <div class="mt-5 px-16">
-                        <div class="flex justify-center">
-                            <button  @click="beforePage" class="mx-2 w-44  monserrat h-8 border border-black">Anterior</button>                                
-                            <button  @click="nexPage" class="mx-2 w-44 h-8 monserrat bg-black text-force-white">Siguiente</button>                                
-                        </div>
+                    <div class="flex justify-center">
+                        <button  @click="beforePage" class="mx-2 w-44  monserrat h-8 border border-black">Anterior</button>                                
+                        <button  @click="nexPage" class="mx-2 w-44 h-8 monserrat bg-black text-force-white">Siguiente</button>                                
                     </div>
+                </div>
                 <div class="h-4"></div>
                 </div>
                 <!-- page 3 -->
-                <div v-if="page===2" class="overflow-y-auto">
+                <div v-if="page===2">
                     <div class="mt-4 w-full h-16 bg-1f">
-                        <div class="pl-16 ">
-                            <p class="text-force-white text-sm moserrat-semibold pt-3">Producto</p>
-                            <p class="uppercase text-xl text-force-white moserrat-bold">{{name}}</p>
+                        <div class="pl-16 pt-1">
+                            <p class="mt-2 text-force-white text-xs monserrat font-normal">Producto</p>
+                            <p class="uppercase text-xl text-force-white moserrat-bold font-bold">{{name}}</p>
                         </div>                    
                     </div>
-                    <div class="mt-5 px-16">
+                    <div class="mt-8 px-16">
                         <p class="uppercase text-xl text-force-black moserrat-bold ">IMAGEN DE INSTALACIÓN SUGERIDA</p>
-                        <p class="mt-2 text-xs text-force-black monserrat">Carga la imagen que mostrará la instalación sugerida de la serie, sólo puedes cargar una imágen.</p>
+                        <p class="mt-3 text-xs text-force-black monserrat">Carga la imagen que mostrará la instalación sugerida de la serie, sólo puedes cargar una imágen.</p>
                     </div>
                     <div class="px-16 w-full mt-4">
                         <div class="w-full min-h-341 bg-gray-200 flex justify-center items-center">
@@ -389,14 +389,17 @@
                             </div>
                         </div>
                         </div>
-                     </div>           
-                    <div class=" relative bottom-0 mt-44 px-16">
+                     </div>   
+                    <div class="px-3" style="margin-top: 8.3rem;">
+                        <div class="h-px bg-d5"></div>
+                    </div>
+                    <div class="mt-5 px-16">
                         <div class="flex justify-center">
                             <button  @click="beforePage" class="mx-2 w-44 monserrat h-8 border border-black">Anterior</button>                                
                             <button 
                              @click="save" class="mx-2 w-44 h-8 bg-black monserrat text-force-white">Guardar Cambios</button>                                
                         </div>
-                    </div>  
+                    </div>      
                     <div class="h-4"></div>                  
                 </div>
              </div>
