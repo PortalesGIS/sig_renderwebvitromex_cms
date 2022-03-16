@@ -28,7 +28,7 @@
                         <div class=" cursor-pointer  flex justify-center">
                             <img 
                          :src="img"
-                        style="width:130px;height:120px;"                         
+                        style="width:120px;height:120px;"                         
                         class="object-cover border border-black"
                         alt=""
                         >                        
