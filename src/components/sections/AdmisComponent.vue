@@ -3,8 +3,8 @@
 <div class="h-screen w-full overflow-hidden">
     <div class="h-5 xl:h-16"></div>    
     <div class="h-5/6 overflow-hidden">
-    <div class="overflow-hidden">
-      <p class="uppercase font-bold text-5xl text-center monserrat text-white pl-10 py-7">
+    <div class="overflow-hidden pl-64">
+      <p class="uppercase font-bold text-5xl text-center monserrat text-white py-7">
       Administradores
       </p>
     </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import AdminFilterComponentVue from '../filters/AdminFilterComponent.vue'
 import AdminTableComponentVue from '../tables/AdminTableComponent.vue'
 export default {
@@ -48,6 +49,15 @@ export default {
             }          
    }
  },
+ computed: {
+    ...mapGetters(["getAllAdmins"]),
+  },
+   watch: {
+    getAllAdmins(){
+      // console.log(state.length);
+      this.adminSelected = []
+    }
+  }
 }
 </script>
 
