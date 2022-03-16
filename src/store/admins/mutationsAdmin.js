@@ -21,7 +21,7 @@ export const errorCreateAdmin = (state,payload)=>{
 }
 
 export const quitAdmin = (state,payload)=>{
-    const newList = state.listAdmins.filter(admin=>payload !==admin._id)
+    const newList = state.listAdmins.filter(admin=>payload !==admin.id)
     state.listAdmins = newList
     state.listAdminsFilter = newList
 }
