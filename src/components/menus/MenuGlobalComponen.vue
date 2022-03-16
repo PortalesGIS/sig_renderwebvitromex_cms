@@ -512,7 +512,7 @@ export default {
     },
     colorText(view) {
       if (this.getVieWindow === view) {
-        return "text-black moserrat font-bold";
+        return "text-black monserrat font-bold";
       } else {
         return "text-white monserrat";
       }
