@@ -21,9 +21,10 @@ export const errorCreateAdmin = (state,payload)=>{
 }
 
 export const quitAdmin = (state,payload)=>{
-    const newList = state.listAdmins.filter(admin=>payload !==admin._id)
-    state.listAdmins = newList
-    state.listAdminsFilter = newList
+    console.log(payload);
+    // const newList = state.listAdmins.filter(admin=>payload !==admin.id)
+    state.listAdmins = []
+    state.listAdminsFilter = []
 }
 
 export const openAdminModal = (state,payload)=>{

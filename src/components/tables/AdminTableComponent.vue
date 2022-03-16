@@ -3,7 +3,7 @@
     <div class="pl-10 w-full grid grid-cols-12 bg-1f">
       <div class="flex items-center justify-between bg-1f">
         <p class="text-force-white text-sm font-bold py-2">
-          <input type="checkbox" />
+          <!-- <input type="checkbox" /> -->
         </p>
       </div>
       <div class="">
@@ -143,6 +143,14 @@ export default {
   created() {
     this.onGetAllUsers();
   },
+  watch: {
+    getAllAdmins(state){
+      // console.log(state.length);
+      if(state.length === 0){
+        this.onGetAllUsers();
+      }
+    }
+  }
 };
 </script>
 
