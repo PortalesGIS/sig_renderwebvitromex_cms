@@ -36,7 +36,8 @@ export const getAllAdminsDB = async ({commit})=>{
       if(response.ok){
         commit("setAdminStateLogin",response);
       }else{
-        alert("usuario/contraseña erroneo")
+        commit("errorAdminLogin",{type: response.msg.includes('service')});
+        // alert("usuario/contraseña erroneo")
       }
     })
       
@@ -83,7 +84,10 @@ export const getAllAdminsDB = async ({commit})=>{
         .then(() =>commit("quitAdmin",idAdmin)  )
         .catch(error => console.log('error', error));
     })
-      
+  }
+
+  export const openModalAdmin =({commit},payload)=>{
+    commit("openAdminModal", payload) 
   }
 
   export const createAdmin =({commit},payload)=>{
@@ -103,14 +107,14 @@ export const getAllAdminsDB = async ({commit})=>{
         .then(response => response.json())
         .then((result) =>{
           if(!result.error){
-            commit("addAdmin",{name:payload.name,email:payload.email,createdAt:new Date().toISOString().slice(0,10)}) 
+            commit("addAdmin",result.Addadmin) 
           }
           else{
-            alert("Email ya registrado")
+            commit("errorCreateAdmin",{errorCreateAdmin: true}) 
+            // alert("Email ya registrado")
           }
         }) 
         .catch(error => console.log('error', error));
-          
   }
 
   export const exitCms = ()=>{

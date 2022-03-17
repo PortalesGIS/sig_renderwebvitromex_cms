@@ -9,7 +9,7 @@
 </div>
   <div v-else class="flex h-screen w-screen">
     <MenuGlobalComponenVue/>
-    <div class="w-full h-full">
+    <div class="w-full h-full bg-rock-table bg-cover bg-no-repeat bg-center">
       
       <!-- <div 
         v-if="getVieWindow===windows.dashboard"

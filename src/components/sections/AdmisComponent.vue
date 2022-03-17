@@ -1,9 +1,10 @@
 <template>
-<div class="h-screen w-full  bg-6f overflow-hidden">
+<!-- //! change background bg-rock-table -->
+<div class="h-screen w-full overflow-hidden">
     <div class="h-5 xl:h-16"></div>    
-    <div class="h-5/6   bg-6f shadow-10xl overflow-hidden">
-    <div class="overflow-hidden">
-      <p class="uppercase text-5xl monserrat text-white font-normal pl-10 py-7">
+    <div class="h-5/6 overflow-hidden">
+    <div class="overflow-hidden pl-64">
+      <p class="uppercase font-bold text-5xl text-center monserrat text-white py-7">
       Administradores
       </p>
     </div>
@@ -13,7 +14,7 @@
         :adminsSelected="adminSelected"
       />
     </div>
-    <div class="w-full h-3/6 xl:h-4/6   shadow-4xl bg-6f">
+    <div class="w-full h-3/6 xl:h-4/6">
      <AdminTableComponentVue
       :onSelectedAdmin="selectedAdmin"
      />
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import AdminFilterComponentVue from '../filters/AdminFilterComponent.vue'
 import AdminTableComponentVue from '../tables/AdminTableComponent.vue'
 export default {
@@ -47,6 +49,15 @@ export default {
             }          
    }
  },
+ computed: {
+    ...mapGetters(["getAllAdmins"]),
+  },
+   watch: {
+    getAllAdmins(){
+      // console.log(state.length);
+      this.adminSelected = []
+    }
+  }
 }
 </script>
 

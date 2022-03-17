@@ -1,9 +1,10 @@
 <template>
-  <div class="h-screen w-full bg-6f overflow-x-hidden">
+<!-- //! change background bg-rock-table -->
+  <div class="h-screen w-full overflow-x-hidden">
     <div class="h-5 xl:h-16"></div>
-    <div class="h-5/6  bg-6f shadow-10xl overflow-hidden">
+    <div class="h-5/6 overflow-hidden">
       <div class="overflow-hidden">
-        <p class="uppercase text-5xl text-white font-normal pl-10 monserrat py-7">
+        <p class="uppercase font-bold text-5xl  text-center text-white monserrat py-7">
           Series y Productos
         </p>
       </div>

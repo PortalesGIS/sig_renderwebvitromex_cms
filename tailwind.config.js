@@ -71,6 +71,9 @@ module.exports = {
       '2xl': '1736px',
       // => @media (min-width: 1536px) { ... }
     },
+    backgroundImage: {
+      'rock-table': "url('./assets/background/rocas-min2.jpg')",
+    },
     backgroundColor:theme=>({
       ...theme("colors"),
       "fondo":"#E5E5E5",
@@ -96,7 +99,9 @@ module.exports = {
       "white":"var(--color-text)",
       "black":"var(--color-text-back)",
       "force-black":"#000000",
-      "force-white":"#ffffff"
+      "force-white":"#ffffff",
+      "6etext":"#6E6E6E",
+      "1f":"#1F1F1F"
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',

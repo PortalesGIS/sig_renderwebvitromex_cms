@@ -67,6 +67,12 @@ export default createStore({
     listTypologies:[],
     listTypologiesFilter:[],    
     listFormats:[],
+    isRegisterAdmin: false,
+    uiOpenModalAdmin: false,
+    uiErrorFormLogin: {
+      email: false,
+      password: false
+    }
   },
   mutations: {
     ...mutationsProducts,

@@ -408,7 +408,7 @@
                     "
                   >
                     <div class="flex px-3 pt-5">
-                      <img src="../../assets/alerta.svg" class="pr-2" alt="" />
+                      <img src="../../assets/alerta.svg" class="pr-2 self-start" alt="" />
                       <p class="text-force-black text-justify text-xs font-normal">
                         Debes completar los datos de este producto antes de
                         activarlo.
@@ -444,7 +444,7 @@
                     "
                   >
                     <div class="flex px-3 pt-5">
-                      <img src="../../assets/alerta.svg" class="pr-2" alt="" />
+                      <img src="../../assets/alerta.svg" class="pr-2 self-start" alt="" />
                       <p class="text-force-black text-justify text-xs monserrat">
                         ¿Estás seguro de que deseas suspender este producto en
                         la App y Web 3D?
