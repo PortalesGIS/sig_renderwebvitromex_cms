@@ -1,6 +1,8 @@
 <template>
+  <NewProfession ref="modalprofession"/>
+  <NewProfessionEliminate ref="modalprofessioneliminated"/>
   <div class="w-full h-full bg-f5">
-    <div class="pl-10 w-full grid grid-cols-12 bg-1f">
+    <div class="pl-10 w-full grid grid-cols-13 gap-x-4 bg-1f">
       <div class="flex items-center">
         <p
           class="text-force-white text-xs font-semibold py-2 moserrat-semibold"
@@ -77,7 +79,7 @@
           />
         </div>
       </div>
-      <div class="col-span-2 flex items-center justify-start">
+      <div class="col-span-1 flex items-center justify-start">
         <p
           class="text-force-white text-xs font-semibold py-2 moserrat-semibold"
         >
@@ -167,6 +169,17 @@
             class="px-2 cursor-pointer transform rotate-180"
             alt=""
           />
+        </div>
+      </div>
+      <div class="col-span-2 flex items-center justify-start">
+        <div class="w-full flex justify-center">
+          <button 
+              type="submit"
+              class="bg-4f text-force-white w-44 h-8 text-sm font-medium"
+              @click="openModalNewProfession"
+              >
+              Administrar Profesiones
+          </button>
         </div>
       </div>
     </div>
@@ -297,7 +310,13 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import NewProfession from '../modals/NewProfession.vue'
+import NewProfessionEliminate from '../modals/NewProfessionEliminate.vue'
 export default {
+  components:{
+    NewProfession,
+    NewProfessionEliminate
+  },
   data() {
     return {
       numberDataPerPage: 20,
@@ -316,6 +335,9 @@ export default {
   },
   methods: {
     ...mapActions(["getAllUsersApp", "filterAlphabet"]),
+    openModalNewProfession(){
+      this.$refs.modalprofession.openModal()
+    },
     async onGetAllUsers() {
       await this.getAllUsersApp();
     },
