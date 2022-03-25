@@ -61,7 +61,7 @@
                     alt=""
                   />
                 </button>
-                <button @click="eliminated(index)">
+                <button @click="eliminated(profesion.id)">
                   <img
                     class="object-cover h-6 w-6"
                     src="../../assets/icons/eliminarProfession.svg"
@@ -208,15 +208,16 @@ export default {
               status: true
             });
           });
-          await this.editProfession({filterEdits, newState: this.getStateProfession});
+          await this.editProfession(filterEdits);
           this.cancelNewProfession()
         }
       } else {
         if (this.name !== "") {
-          await this.createProfession({ profession: this.name, id:  this.getStateProfession.length + 1, status: true});
+          await this.createProfession({ profession: this.name});
           this.cancelNewProfession()
         }
       }
+      await this.getAllProfession();
     },
     editaProfession(index) {
       this.editInputs.push(index);
@@ -238,6 +239,9 @@ export default {
     }
   },
   async mounted() {
+    await this.getAllProfession();
+  },
+  async created() {
     await this.getAllProfession();
   },
   computed: {

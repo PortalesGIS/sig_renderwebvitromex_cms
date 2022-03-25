@@ -40,7 +40,7 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
   methods: {
-    ...mapActions(["openModalProfession", "getAllProfession"]),
+    ...mapActions(["openModalProfession", "getAllProfession", "fetchEliminateData"]),
     openModalProfessions() {
       // this.openModalProfession()
     },
@@ -52,18 +52,15 @@ export default {
         inputEdit: false,
       });
     },
-    eliminatedProfession() {
-      this.openModalProfession({
-        modalProfesion: true,
-        eliminateProfesion: false,
-        inputAdd: false,
-        inputEdit: false,
-      });
+    async eliminatedProfession() {
+      await this.fetchEliminateData(this.getStateEliminatedNumber);
+      await this.getAllProfession()
     },
   },
   computed: {
     ...mapGetters({
       getUiNewProfession: "getUiNewProfession",
+      getStateEliminatedNumber: "getStateEliminatedNumber",
     }),
   },
 };

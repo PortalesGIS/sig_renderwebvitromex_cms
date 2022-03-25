@@ -4,3 +4,6 @@ export const getUiNewProfession =(state)=>{
 export const getStateProfession =(state)=>{
     return state.allProfession;
 }
+export const getStateEliminatedNumber =(state)=>{
+    return state.eliminatedNumber;
+}
