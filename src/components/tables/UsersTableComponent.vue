@@ -3,7 +3,7 @@
   <NewProfessionEliminate ref="modalprofessioneliminated"/>
   <div class="w-full h-full bg-f5">
     <div class="pl-10 w-full grid grid-cols-13 gap-x-4 bg-1f">
-      <div class="flex items-center">
+      <div class="flex items-center col-span-1">
         <p
           class="text-force-white text-xs font-semibold py-2 moserrat-semibold"
         >
@@ -188,11 +188,11 @@
       <div v-for="(user, index) in getAllUsers" :key="index">
         <div v-if="index >= startData && index <= endData">
           <div
-            class="pl-10 grid grid-cols-12"
+            class="pl-10 grid grid-cols-13 gap-x-4 " 
             :class="index % 2 ? 'bg-white' : ''"
           >
             <!-- //* color in number table -->
-            <div class="">
+            <div class="col-span-1">
               <p class="text-force-black text-sm font-normal py-2 monserrat">
                 {{ index + 1 }}
               </p>
@@ -220,7 +220,7 @@
                 {{ user.email }}
               </p>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-1">
               <p
                 class="
                   text-force-black text-sm

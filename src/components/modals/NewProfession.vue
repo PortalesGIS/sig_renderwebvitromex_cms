@@ -155,7 +155,8 @@ export default {
       "eliminatedProfession"
     ]),
     closeModal() {
-      this.name = "";
+      this.name = ""
+      this.editInputs = [];
       this.openModalProfession({
         modalProfesion: false,
         eliminateProfesion: false,
