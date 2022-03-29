@@ -24,6 +24,9 @@ import * as mutationsDashboard from './dashboard/mutationsDashboard'
 import * as actionsFormat from './formats/actionsFormat'
 import * as gettersFormat from './formats/gettersFormat'
 import * as mutationsFormat from './formats/mutationsFormat'
+import * as actionsProfession from './profession/actionsProfession'
+import * as gettersProfession from './profession/gettersProfession'
+import * as mutationsProfesion from './profession/mutationsProfesion'
 
 
 
@@ -72,9 +75,18 @@ export default createStore({
     uiErrorFormLogin: {
       email: false,
       password: false
-    }
+    },
+    uiNewProfession: {
+      modalProfesion: false,
+      eliminateProfesion: false,
+      inputAdd: false,
+      inputEdit: false,
+    },
+    allProfession: [],
+    eliminatedNumber: 0
   },
   mutations: {
+    ...mutationsProfesion,
     ...mutationsProducts,
     ...mutationsShop,
     ...mutationsFormat,
@@ -91,6 +103,7 @@ export default createStore({
     }
   },
   actions: {
+  ...actionsProfession,
   ...actionsProducts,
    ...actionsShop,
    ...actionsAdmin,
@@ -108,6 +121,7 @@ export default createStore({
     }
   },
   getters:{
+    ...gettersProfession,
     ...gettersProducts,
     ...gettersShop,
     ...gettersAdmin,
