@@ -101,12 +101,7 @@ export default {
             }
         }
     },
-    watch: {
-        getAllAdmins(){
-            this.email="";
-            this.name="";
-        }
-    }
+    
 
 }
 </script>

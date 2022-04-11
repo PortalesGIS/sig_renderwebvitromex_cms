@@ -9,11 +9,11 @@
       <div class="">
         <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold ">No.</p>
       </div>
-      <div class="col-span-2 flex items-center justify-start mr-4">
+      <div class="col-span-3 flex items-center justify-start mr-4">
         <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold ">Nombre</p>
         <i class="fas fa-angle-down px-2" style="color: white"></i>
       </div>
-      <div class="col-span-2 flex items-center justify-start mr-4">
+      <div class="col-span-5 flex items-center justify-start mr-4">
         <p class="text-force-white text-xs font-semibold py-2 moserrat-semibold ">Correo</p>
         <i class="fas fa-angle-down px-2" style="color: white"></i>
       </div>
@@ -36,10 +36,10 @@
         <div class="">
           <p class="text-force-black text-sm py-2 monserrat">{{ i+1 }}</p>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-3">
           <p class="text-force-black text-sm py-2 monserrat">{{ user.name }}</p>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-5">
           <p class="text-force-black text-sm py-2 monserrat">{{ user.email }}</p>
         </div>
         <div class="col-span-2">

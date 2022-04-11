@@ -1,7 +1,7 @@
 
 // TODO: liga de desarollo testcommit
 // export const baseUrl = "https://decorador3d.gis.com.mx"
-export const baseUrl = "https://testing-api-vitro-arko.xyz"
+export const baseUrl = "https://vitrolab.gis.com.mx"
 // export const baseUrl = "http://localhost:8060"
 
 export const typesViewsMenu={
