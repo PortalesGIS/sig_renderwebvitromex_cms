@@ -210,11 +210,11 @@
             <div class="col-span-2">
               <p
                 class="
+                overflow-x-auto
                   text-force-black text-sm
                   font-normal
                   py-2
                   monserrat
-                  overflow-x-hidden
                 "
               >
                 {{ user.email }}
@@ -226,8 +226,8 @@
                   text-force-black text-sm
                   font-normal
                   py-2
+                  overflow-x-auto
                   monserrat
-                  overflow-x-hidden
                 "
               >
                 {{ user.profession }}
